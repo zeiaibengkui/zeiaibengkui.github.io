@@ -8,29 +8,32 @@ window.getElementIndex = getElementIndex;
 //Edit
 function edit(el) {
     //Don't edit element which has been editing
-    if (el.getAttribute("contenteditable"))
+    if (el.contentEditable === "true")
         return;
     el.innerHTML = JSON.stringify({
         href: el.getAttribute("href"),
         name: el.textContent
     });
-    el.setAttribute("contenteditable", "");
+    el.setAttribute("contenteditable", "true");
     el.parentNode.setAttribute("draggable", "false");
     el.focus();
     processEdit(el);
 }
 function processEdit(el) {
-    el.addEventListener("blur", function () {
+    el === null || el === void 0 ? void 0 : el.addEventListener("blur", function () {
         var _a;
-        if (!el.textContent)
-            (_a = el.parentElement) === null || _a === void 0 ? void 0 : _a.remove();
+        //Empy to remove
+        if (!(el === null || el === void 0 ? void 0 : el.textContent)) {
+            (_a = el === null || el === void 0 ? void 0 : el.parentElement) === null || _a === void 0 ? void 0 : _a.remove();
+            return;
+        }
+        //If is removing
+        if (!el)
+            return;
         try {
-            //If is removing
-            if (!el)
-                return;
             //If formated JSON
-            var processedInput_1 = JSON.parse(el.textContent || "null");
-            //If there's already a same-name link
+            var processedInput_1 = JSON.parse(el.textContent);
+            //If there's already a same-named link
             document.querySelectorAll("#list a").forEach(function (value) {
                 if (value.textContent == processedInput_1.name) {
                     throw new Error("There's already a same-named link! Please try a new name.");
@@ -83,7 +86,6 @@ function remove(e) {
     var _a;
     var index = (_a = e.dataTransfer) === null || _a === void 0 ? void 0 : _a.getData("Index");
     var liEl = document.querySelectorAll("#list li")[index];
-    console.log(index, listEl.children, liEl);
     liEl.remove();
 }
 window.remove = remove;

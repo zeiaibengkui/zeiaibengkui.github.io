@@ -1,6 +1,7 @@
 //import message from "./message";
 
 const listEl = document.getElementById("list") as HTMLUListElement;
+
 function getElementIndex(element: HTMLElement): number {
     return Array.prototype.indexOf.call(element.parentNode?.children, element);
 }
@@ -9,31 +10,37 @@ window.getElementIndex = getElementIndex;
 //Edit
 function edit(el: HTMLElement) {
     //Don't edit element which has been editing
-    if (el.getAttribute("contenteditable")) return;
+    if (el.contentEditable === "true") return;
 
     el.innerHTML = JSON.stringify({
         href: el.getAttribute("href"),
         name: el.textContent,
     });
-    el.setAttribute("contenteditable", "");
-    (el.parentNode as HTMLElement).setAttribute("draggable","false")
+    el.setAttribute("contenteditable","true");
+    (el.parentNode as HTMLElement).setAttribute("draggable", "false");
     el.focus();
     processEdit(el);
 }
-function processEdit(el: HTMLElement) {
-    el.addEventListener(
+
+function processEdit(el: HTMLElement | null) {
+    el?.addEventListener(
         "blur",
         () => {
-            if (!el.textContent) el.parentElement?.remove();
-            try {
-                //If is removing
-                if(!el) return ;
+            //Empy to remove
+            if (!el?.textContent) {
+                el?.parentElement?.remove();
+                return;
+            }
 
+            //If is removing
+            if (!el) return;
+
+            try {
                 //If formated JSON
                 const processedInput: { name: string; href: string } =
-                    JSON.parse(el.textContent || "null");
+                    JSON.parse(el.textContent as string);
 
-                //If there's already a same-name link
+                //If there's already a same-named link
                 document.querySelectorAll("#list a").forEach((value) => {
                     if (value.textContent == processedInput.name) {
                         throw new Error(
@@ -46,7 +53,10 @@ function processEdit(el: HTMLElement) {
                 el.innerHTML = processedInput.name;
                 el.setAttribute("href", processedInput.href);
                 el.removeAttribute("contenteditable");
-                (el.parentNode as HTMLElement).setAttribute("draggable","true")
+                (el.parentNode as HTMLElement).setAttribute(
+                    "draggable",
+                    "true"
+                );
 
                 //Save
                 save();
@@ -92,7 +102,6 @@ const removeEl = document.getElementById("remove") as HTMLButtonElement;
 function remove(e: DragEvent) {
     const index = e.dataTransfer?.getData("Index") as any;
     const liEl = document.querySelectorAll("#list li")[index] as HTMLElement;
-    console.log(index, listEl.children, liEl);
     liEl.remove();
 }
 window.remove = remove;
@@ -116,7 +125,7 @@ function save() {
     console.log(list);
     localStorage.setItem("list", JSON.stringify(list));
 
-    message.add("Saved!","success")
+    message.add("Saved!", "success");
 }
 
 window.addEventListener("DOMContentLoaded", () => {

@@ -1,4 +1,4 @@
-var messageBox = document.getElementById("toast-box");
+var toastBox = document.getElementById("toast-box");
 var toastExample = document.getElementById("toast-example");
 var message = {
     add: function (text, type) {
@@ -14,20 +14,22 @@ var message = {
             }
         });
         toast.addEventListener("click", function (e) {
+            //fadeout
             toast.style.opacity = "0";
-            if (getElementIndex(toast) == 1) { // getElementIndex(toast) == 0 is the example                
-                toast.style.marginBottom = -toast.clientHeight - 5 + "px";
+            if (getElementIndex(toast) + 1 == toastBox.children.length &&
+                toastBox.scrollHeight > window.innerHeight) {
+                toast.style.marginTop = -toast.clientHeight - 5 + "px";
             }
             else {
-                toast.style.marginTop = -toast.clientHeight - 5 + "px";
+                toast.style.marginBottom = -toast.clientHeight - 5 + "px";
             }
             setTimeout(function () {
                 toast.remove();
             }, 500);
         });
-        messageBox === null || messageBox === void 0 ? void 0 : messageBox.appendChild(toast);
-        messageBox === null || messageBox === void 0 ? void 0 : messageBox.scroll({
-            top: messageBox.scrollHeight,
+        toastBox === null || toastBox === void 0 ? void 0 : toastBox.appendChild(toast);
+        toastBox === null || toastBox === void 0 ? void 0 : toastBox.scroll({
+            top: toastBox.scrollHeight,
             behavior: "smooth"
         });
     }

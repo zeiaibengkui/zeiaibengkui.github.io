@@ -17,7 +17,7 @@
         transition: box-shadow 0s;
     }
 } */
- 
+
 body {
     background: #000;
     color: white;
@@ -63,7 +63,7 @@ li {
             background: rgba(255, 255, 255, 0.2);
         }
 
-        &[contenteditable]{
+        &[contenteditable] {
             cursor: text;
         }
     }
@@ -152,5 +152,24 @@ h1 {
             height: 100%;
             width: 100%;
         }
+    }
+}
+
+button {
+    border: outset 3px rgb(206, 206, 206);
+    background: rgb(235, 235, 235);
+    color: rgb(0, 0, 0);
+    text-shadow: white 0 0 0;
+    transition: text-shadow 0.2s, background-color 0.2s;
+    //padding: 0 1.5px 1.5px 0;
+
+    &:active {
+        border: inset 3px rgb(206, 206, 206);
+        //padding: 1.5px 0 0 1.5px;
+    }
+
+    &:hover {
+        text-shadow: white 0 0 3px;
+        background: rgb(221, 221, 221);
     }
 }

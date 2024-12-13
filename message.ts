@@ -1,4 +1,4 @@
-const messageBox = document.getElementById("toast-box");
+const toastBox = document.getElementById("toast-box") as HTMLElement;
 const toastExample = document.getElementById("toast-example");
 
 const message = {
@@ -20,11 +20,15 @@ const message = {
         });
 
         toast.addEventListener("click", (e) => {
+            //fadeout
             toast.style.opacity = "0";
-            if (getElementIndex(toast) == 1) { // getElementIndex(toast) == 0 is the example                
-                toast.style.marginBottom = `${-toast.clientHeight - 5}px`;
-            } else {
+            if (
+                getElementIndex(toast) + 1 == toastBox.children.length &&
+                toastBox.scrollHeight > window.innerHeight
+            ) {
                 toast.style.marginTop = `${-toast.clientHeight - 5}px`;
+            } else {
+                toast.style.marginBottom = `${-toast.clientHeight - 5}px`;
             }
 
             setTimeout(() => {
@@ -32,9 +36,9 @@ const message = {
             }, 500);
         });
 
-        messageBox?.appendChild(toast);
-        messageBox?.scroll({
-            top: messageBox.scrollHeight,
+        toastBox?.appendChild(toast);
+        toastBox?.scroll({
+            top: toastBox.scrollHeight,
             behavior: "smooth",
         });
     },

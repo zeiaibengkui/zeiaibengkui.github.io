@@ -127,3 +127,18 @@ h1:hover, input:checked + h1 {
   height: 100%;
   width: 100%;
 }
+
+button {
+  border: outset 3px #cecece;
+  background: #ebebeb;
+  color: black;
+  text-shadow: white 0 0 0;
+  transition: text-shadow 0.2s, background-color 0.2s;
+}
+button:active {
+  border: inset 3px #cecece;
+}
+button:hover {
+  text-shadow: white 0 0 3px;
+  background: #dddddd;
+}
