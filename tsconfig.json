@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "ES2015",
+        "lib": ["ESNext","DOM"],
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

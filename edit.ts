@@ -1,11 +1,14 @@
 //import message from "./message";
 
+import message from "./message.js";
+
+
 const listEl = document.getElementById("list") as HTMLUListElement;
 
 function getElementIndex(element: HTMLElement): number {
     return Array.prototype.indexOf.call(element.parentNode?.children, element);
 }
-window.getElementIndex = getElementIndex;
+export {getElementIndex }
 
 //Edit
 function edit(el: HTMLElement) {
@@ -158,3 +161,5 @@ function dragganle(li: HTMLLIElement) {
         //e.dataTransfer?.setDragImage((e.target as Element).children[0],0,0)
     });
 }
+
+declare const window: any & Window;

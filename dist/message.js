@@ -1,3 +1,4 @@
+import { getElementIndex } from "./edit.js";
 var toastBox = document.getElementById("toast-box");
 var toastExample = document.getElementById("toast-example");
 var message = {
@@ -35,7 +36,7 @@ var message = {
     }
 };
 window.message = message;
-// export default message;
+export default message;
 window.addEventListener("error", function (event) {
     message.add(event.message + "\n", "error");
 });

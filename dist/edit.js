@@ -1,10 +1,11 @@
 //import message from "./message";
+import message from "./message.js";
 var listEl = document.getElementById("list");
 function getElementIndex(element) {
     var _a;
     return Array.prototype.indexOf.call((_a = element.parentNode) === null || _a === void 0 ? void 0 : _a.children, element);
 }
-window.getElementIndex = getElementIndex;
+export { getElementIndex };
 //Edit
 function edit(el) {
     //Don't edit element which has been editing
