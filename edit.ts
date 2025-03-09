@@ -16,7 +16,7 @@ function edit(el: HTMLElement) {
         href: el.getAttribute("href"),
         name: el.textContent,
     });
-    el.setAttribute("contenteditable","true");
+    el.setAttribute("contenteditable", "true");
     (el.parentNode as HTMLElement).setAttribute("draggable", "false");
     el.focus();
     processEdit(el);
