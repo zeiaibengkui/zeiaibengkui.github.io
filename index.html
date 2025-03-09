@@ -4,8 +4,23 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=100,initial-scale=2.0" />
         <title>Index</title>
-        <link rel="stylesheet" href="./dist/style.css" />
-        <link rel="stylesheet" href="./dist/message.css" />
+
+        <!--CSS-->
+        <script type="module">
+            import * as sass from "https://jspm.dev/sass";
+            const styleList = ["./message.scss", "./style.scss"];
+            styleList.forEach(async (value) => {
+                const input = await (await fetch(value)).text();
+                const output = sass.compileString(input);
+
+                const styleEL = document.createElement("style");
+                styleEL.innerHTML = output.css;
+                document.body.appendChild(styleEL);
+            });
+        </script>
+
+        <!--Babel-->
+        <script src="./babel.js"></script>
     </head>
 
     <body>
@@ -91,9 +106,26 @@
                 <span class="text"></span>
             </div>
         </div>
+
+        <pre id="poem"></pre>
+        <script>
+            fetch("/poem.txt").then(async (value) => {
+                document.getElementById("poem").innerHTML = await value.text();
+                /* .split("\n")
+                    .join("<br>"); */
+            });
+        </script>
     </body>
-    <script type="module" src="./dist/message.js"></script>
-    <script type="module" src="./dist/edit.js"></script>
-    <script type="module" src="./dist/meteor.js"></script>
-    <script type="module" src="./dist/music.min.js"></script>
+    <script
+        type="text/babel"
+        src="message.ts"
+        data-presets="typescript"
+    ></script>
+    <script type="text/babel" src="edit.ts" data-presets="typescript"></script>
+    <script
+        type="text/babel"
+        src="meteor.ts"
+        data-presets="typescript"
+    ></script>
+    <script type="text/babel" src="music.ts" data-presets="typescript"></script>
 </html>

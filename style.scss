@@ -21,7 +21,7 @@
 body {
     background: #000;
     color: white;
-    padding: 15vw;
+    padding: 8vw;
     margin: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -55,6 +55,7 @@ li {
         display: block;
         width: 100%;
         text-decoration: none;
+        word-wrap: break-word;
 
         &:focus {
             outline: none;
@@ -172,4 +173,12 @@ button {
         text-shadow: white 0 0 3px;
         background: rgb(221, 221, 221);
     }
+}
+
+#poem {
+    margin-top: 10rem;
+    text-shadow: white 0 0 2px;
+    text-align: center;
+    font-family: "Times New Roman", Times, KaiTi, serif;
+    font-style: italic;
 }

@@ -26,12 +26,12 @@ class Meteor {
 
     init() {
         this.length = (Math.random() * 50 + 50) * vmin;
-        this.x = Math.random() * -2 * window.innerWidth;
-        this.y = Math.random() * -2 * window.innerHeight;
+        this.x = Math.random() * -5 * window.innerWidth;
+        this.y = Math.random() * -5 * window.innerHeight;
 
         this.color = ["white", this.randomColor(), "transparent"];
 
-        this.speed = (Math.random() * 0.25 + 1) * defTime;
+        this.speed = (Math.random() * 0.15 + 0.7) * defTime;
         //console.log(this.speed);
     }
 
@@ -107,9 +107,9 @@ initArray();
 
 function initArray() {
     meteors = stars = [];
-    for (let i = 0; i < vmin / 20 + 3; i++) {
+    for (let i = 0; i < vmin / 50 + 3; i++) {
         meteors.push(new Meteor());
-        for (let index = 0; index < Math.random() * 15 + 20; index++) {
+        for (let index = 0; index < Math.random() * 20 + 20; index++) {
             stars.push(new Star());
         }
     }
@@ -141,7 +141,7 @@ function animate(newTimestamp: number) {
         star.update();
         star.draw();
     });
-    
+
     requestAnimationFrame(animate);
 }
 animate(time);
