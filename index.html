@@ -5,22 +5,10 @@
         <meta name="viewport" content="width=100,initial-scale=2.0" />
         <title>Index</title>
 
-        <!--CSS-->
-        <script type="module">
-            import * as sass from "https://jspm.dev/sass";
-            const styleList = ["./message.scss", "./style.scss"];
-            styleList.forEach(async (value) => {
-                const input = await (await fetch(value)).text();
-                const output = sass.compileString(input);
-
-                const styleEL = document.createElement("style");
-                styleEL.innerHTML = output.css;
-                document.body.appendChild(styleEL);
-            });
-        </script>
-
-        <!--Babel-->
-        <script src="./babel.js"></script>
+        <style>
+            @import url(./dist/message.css);
+            @import url(./dist/style.css);
+        </style>
     </head>
 
     <body>
@@ -116,16 +104,7 @@
             });
         </script>
     </body>
-    <script
-        type="text/babel"
-        src="message.ts"
-        data-presets="typescript"
-    ></script>
-    <script type="text/babel" src="edit.ts" data-presets="typescript"></script>
-    <script
-        type="text/babel"
-        src="meteor.ts"
-        data-presets="typescript"
-    ></script>
-    <script type="text/babel" src="music.ts" data-presets="typescript"></script>
+    <script type="module" src="./dist/message.js"></script>
+    <script type="module" src="./dist/meteor.js"></script>
+    <script type="module" src="./dist/music.js"></script>
 </html>
