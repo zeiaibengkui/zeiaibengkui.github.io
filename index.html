@@ -95,7 +95,7 @@
             </div>
         </div>
 
-        <pre id="poem"></pre>
+        <pre id="poem" class="hide"></pre>
         <script>
             fetch("/poem.txt").then(async (value) => {
                 document.getElementById("poem").innerHTML = await value.text();
