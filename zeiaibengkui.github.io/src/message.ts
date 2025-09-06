@@ -1,4 +1,4 @@
-import { getElementIndex } from "./edit.js";
+import { getElementIndex } from "./util.js";
 
 
 const toastBox = document.getElementById("toast-box") as HTMLElement;
@@ -22,7 +22,7 @@ const message = {
             }
         });
 
-        toast.addEventListener("click", (e) => {
+        toast.addEventListener("click", () => {
             //fadeout
             toast.style.opacity = "0";
             if (

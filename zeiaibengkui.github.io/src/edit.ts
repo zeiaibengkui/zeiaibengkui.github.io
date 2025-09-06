@@ -1,13 +1,11 @@
 //import message from "./message";
 
+import { getElementIndex } from "./util.js";
 import message from "./message.js";
 
 
 const listEl = document.getElementById("list") as HTMLUListElement;
 
-function getElementIndex(element: HTMLElement): number {
-    return Array.prototype.indexOf.call(element.parentNode?.children, element);
-}
 export {getElementIndex }
 
 //Edit
@@ -19,7 +17,7 @@ function edit(el: HTMLElement) {
         href: el.getAttribute("href"),
         name: el.textContent,
     });
-    el.setAttribute("contenteditable", "true");
+    el.setAttribute("contentEditable", "true");
     (el.parentNode as HTMLElement).setAttribute("draggable", "false");
     el.focus();
     processEdit(el);
@@ -29,7 +27,7 @@ function processEdit(el: HTMLElement | null) {
     el?.addEventListener(
         "blur",
         () => {
-            //Empy to remove
+            //Empty to remove
             if (!el?.textContent) {
                 el?.parentElement?.remove();
                 return;
@@ -39,7 +37,7 @@ function processEdit(el: HTMLElement | null) {
             if (!el) return;
 
             try {
-                //If formated JSON
+                //If formatted JSON
                 const processedInput: { name: string; href: string } =
                     JSON.parse(el.textContent as string);
 
@@ -52,10 +50,10 @@ function processEdit(el: HTMLElement | null) {
                     }
                 });
 
-                //Process userinput
+                //Process userInput
                 el.innerHTML = processedInput.name;
                 el.setAttribute("href", processedInput.href);
-                el.removeAttribute("contenteditable");
+                el.removeAttribute("contentEditable");
                 (el.parentNode as HTMLElement).setAttribute(
                     "draggable",
                     "true"
@@ -88,7 +86,7 @@ function add() {
     const textNode = document.createTextNode("Title");
     a.appendChild(textNode);
     li.appendChild(a);
-    dragganle(li);
+    draggable(li);
     listEl.appendChild(li);
 
     edit(a);
@@ -114,14 +112,14 @@ removeEl.addEventListener("dragover", (e) => e.preventDefault());
 //Save and load
 window.addEventListener("beforeunload", (e) => {
     //If is editing
-    const focusEl = document.querySelector("a[contenteditable]");
+    const focusEl = document.querySelector("a[contentEditable]");
     if (focusEl) {
         e.preventDefault();
     }
     save();
 });
 function save() {
-    const list = {};
+    const list:any = {};
     document.querySelectorAll("#list a").forEach((value) => {
         list[value.textContent || "nothing"] = value.getAttribute("href");
     });
@@ -133,7 +131,7 @@ function save() {
 
 window.addEventListener("DOMContentLoaded", () => {
     //load
-    const list: object = JSON.parse(localStorage.getItem("list") || "{}");
+    const list: any = JSON.parse(localStorage.getItem("list") || "{}");
 
     for (const property in list) {
         const a = document.createElement("a");
@@ -142,13 +140,13 @@ window.addEventListener("DOMContentLoaded", () => {
         const textNode = document.createTextNode(property);
         a.appendChild(textNode);
         li.appendChild(a);
-        dragganle(li);
+        draggable(li);
         listEl.appendChild(li);
     }
 });
 
 //Draggable
-function dragganle(li: HTMLLIElement) {
+function draggable(li: HTMLLIElement) {
     const a = li.children[0] as HTMLLinkElement;
     a.setAttribute("draggable", "false");
     li.setAttribute("draggable", "true");
@@ -162,4 +160,4 @@ function dragganle(li: HTMLLIElement) {
     });
 }
 
-declare const window: any & Window;
+declare const window: Window & {edit:Function,add:Function,remove:Function};
