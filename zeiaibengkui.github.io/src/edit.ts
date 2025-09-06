@@ -1,29 +1,13 @@
 //import message from "./message";
 
 import { getElementIndex } from "./util.js";
-import message from "./message.js";
+import Swal from "sweetalert2";
+import LiComponent from "./liComponent.js";
+import { list } from "./list.js";
 
+export { getElementIndex };
 
-const listEl = document.getElementById("list") as HTMLUListElement;
-
-export {getElementIndex }
-
-//Edit
-function edit(el: HTMLElement) {
-    //Don't edit element which has been editing
-    if (el.contentEditable === "true") return;
-
-    el.innerHTML = JSON.stringify({
-        href: el.getAttribute("href"),
-        name: el.textContent,
-    });
-    el.setAttribute("contentEditable", "true");
-    (el.parentNode as HTMLElement).setAttribute("draggable", "false");
-    el.focus();
-    processEdit(el);
-}
-
-function processEdit(el: HTMLElement | null) {
+/* export function processEdit(el: HTMLElement | null) {
     el?.addEventListener(
         "blur",
         () => {
@@ -33,20 +17,17 @@ function processEdit(el: HTMLElement | null) {
                 return;
             }
 
-            //If is removing
+            //If it has been already removing
             if (!el) return;
 
             try {
                 //If formatted JSON
-                const processedInput: { name: string; href: string } =
-                    JSON.parse(el.textContent as string);
+                const processedInput: { name: string; href: string } = JSON.parse(el.textContent as string);
 
                 //If there's already a same-named link
                 document.querySelectorAll("#list a").forEach((value) => {
                     if (value.textContent == processedInput.name) {
-                        throw new Error(
-                            "There's already a same-named link! Please try a new name."
-                        );
+                        throw new Error("There's already a same-named link! Please try a new name.");
                     }
                 });
 
@@ -54,10 +35,7 @@ function processEdit(el: HTMLElement | null) {
                 el.innerHTML = processedInput.name;
                 el.setAttribute("href", processedInput.href);
                 el.removeAttribute("contentEditable");
-                (el.parentNode as HTMLElement).setAttribute(
-                    "draggable",
-                    "true"
-                );
+                (el.parentNode as HTMLElement).setAttribute("draggable", "true");
 
                 //Save
                 save();
@@ -76,20 +54,20 @@ document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
 
     edit(el);
-});
+}); */
+
+const listEl = document.getElementById("list") as HTMLUListElement;
 
 //Add
 function add() {
-    const a = document.createElement("a");
-    const li = document.createElement("li");
-    a.setAttribute("href", "https://");
-    const textNode = document.createTextNode("Title");
-    a.appendChild(textNode);
-    li.appendChild(a);
-    draggable(li);
+    const key = (Math.random() * 100).toFixed(20);
+    list[key] = "https://";
+    const li = new LiComponent();
+    li.setAttribute("is", "li-component");
+    li.setAttribute("key", key);
     listEl.appendChild(li);
 
-    edit(a);
+    //edit(li);
 }
 window.add = add;
 window.addEventListener("keyup", (e) => {
@@ -100,7 +78,14 @@ addEl?.addEventListener("click", add);
 
 //Remove
 const removeEl = document.getElementById("remove") as HTMLButtonElement;
-function remove(e: DragEvent) {
+async function remove(e: DragEvent) {
+    const confirm = await Swal.fire({
+        title: "Confirm?",
+        showCancelButton: true,
+        theme: "dark",
+    });
+    if (confirm.isDismissed) return;
+
     const index = e.dataTransfer?.getData("Index") as any;
     const liEl = document.querySelectorAll("#list li")[index] as HTMLElement;
     liEl.remove();
@@ -108,56 +93,3 @@ function remove(e: DragEvent) {
 window.remove = remove;
 removeEl.addEventListener("drop", remove);
 removeEl.addEventListener("dragover", (e) => e.preventDefault());
-
-//Save and load
-window.addEventListener("beforeunload", (e) => {
-    //If is editing
-    const focusEl = document.querySelector("a[contentEditable]");
-    if (focusEl) {
-        e.preventDefault();
-    }
-    save();
-});
-function save() {
-    const list:any = {};
-    document.querySelectorAll("#list a").forEach((value) => {
-        list[value.textContent || "nothing"] = value.getAttribute("href");
-    });
-    console.log(list);
-    localStorage.setItem("list", JSON.stringify(list));
-
-    message.add("Saved!", "success");
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-    //load
-    const list: any = JSON.parse(localStorage.getItem("list") || "{}");
-
-    for (const property in list) {
-        const a = document.createElement("a");
-        const li = document.createElement("li");
-        a.setAttribute("href", list[property]);
-        const textNode = document.createTextNode(property);
-        a.appendChild(textNode);
-        li.appendChild(a);
-        draggable(li);
-        listEl.appendChild(li);
-    }
-});
-
-//Draggable
-function draggable(li: HTMLLIElement) {
-    const a = li.children[0] as HTMLLinkElement;
-    a.setAttribute("draggable", "false");
-    li.setAttribute("draggable", "true");
-    li.addEventListener("dragstart", (e) => {
-        e.dataTransfer?.setData(
-            "Index",
-            getElementIndex(e.target as HTMLElement).toString()
-        );
-        e.dataTransfer!.dropEffect = "move";
-        //e.dataTransfer?.setDragImage((e.target as Element).children[0],0,0)
-    });
-}
-
-declare const window: Window & {edit:Function,add:Function,remove:Function};

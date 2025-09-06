@@ -156,7 +156,7 @@ h1 {
     }
 }
 
-button {
+button:not([class]),.btn {
     border: outset 3px rgb(206, 206, 206);
     background: rgb(235, 235, 235);
     color: rgb(0, 0, 0);
