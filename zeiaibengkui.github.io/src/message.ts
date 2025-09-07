@@ -7,6 +7,7 @@ const toastExample = document.getElementById("toast-example");
 const message = {
     add: (
         text: string,
+        detail:string = "",
         type: "info" | "error" | "warn" | "success" = "info"
     ) => {
         const toast = toastExample!.cloneNode(true) as HTMLElement;
@@ -14,11 +15,15 @@ const message = {
             "id",
             "toast-" + type + "-" + (Math.random().toFixed(8) as any) * 10e8
         );
-        Array.from(toast.children).forEach((value) => {
-            if (value.classList.contains("text")) {
-                value.textContent = text;
-            } else if (value.classList.contains("img")) {
-                value.classList.add(type);
+
+        //CSS Selector :>> #toast-id > text
+        Array.from(toast.children).forEach((el) => {
+            if (el.classList.contains("text")) {
+                el.textContent = text;
+            } else if (el.classList.contains("img")) {
+                el.classList.add(type);
+            } else if (el.classList.contains("detail")) {
+                el.textContent = detail;
             }
         });
 

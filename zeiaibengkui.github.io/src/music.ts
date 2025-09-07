@@ -1,7 +1,7 @@
 import message from "./message";
 
 if (localStorage.getItem("dvp")) {
-    message.add("Develop mode enabled. No music embed. Press E and reload to disable it.")
+    message.add("Develop mode enabled. ","No music embed. Press E and reload to disable it.")
 } else {
     document
         .querySelector("#musicFr")
