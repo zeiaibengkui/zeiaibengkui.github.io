@@ -1,12 +1,14 @@
-import { getElementIndex } from "./util";
+import { getElementIndex, parser } from "./util";
 
 export default class LiComponent extends HTMLLIElement {
-    constructor() {
+    constructor(key:string) {
         super();
+        this.key = key
     }
 
     a: HTMLAnchorElement = document.createElement("a");
     li: HTMLLIElement = document.createElement("li");
+    key:string
 
     connectedCallback() {
         console.log("Created LiComponent",this);
@@ -17,6 +19,7 @@ export default class LiComponent extends HTMLLIElement {
         const textNode = document.createTextNode("Title");
         this.a.appendChild(textNode);
         this.li.appendChild(this.a);
+        // this.appendChild(parser(/*HTML*/`<button>Edit</button>`,"text/html"))
 
         //Draggable
         function draggable(li: HTMLLIElement) {
@@ -36,6 +39,7 @@ export default class LiComponent extends HTMLLIElement {
         //implementation
     }
 
+    static observedAttributes = ["key"];
     attributeChangedCallback(name, oldVal, newVal) {
         if (name == "key") {
             this.a.setAttribute("href", window.list[newVal]);
@@ -48,18 +52,7 @@ export default class LiComponent extends HTMLLIElement {
         //implementation
     }
 
-    edit(el: HTMLAnchorElement) {
-        //Don't edit element which has been editing
-        if (el.contentEditable === "true") return;
-
-        el.innerHTML = JSON.stringify({
-            href: el.getAttribute("href"),
-            name: el.textContent,
-        });
-        el.setAttribute("contentEditable", "true");
-        (el.parentNode as HTMLElement).setAttribute("draggable", "false");
-        el.focus();
-        processEdit(el);
+    edit() {
     }
 }
 

@@ -1,8 +1,15 @@
+import LiComponent from "./liComponent";
 import message from "./message";
 
 //Database
 const data = JSON.parse(localStorage.getItem("list") || "{}");
-export const list = new Proxy(data,{})
+export const list = new Proxy(data, {
+    set(target, p, newValue, receiver) {
+        console.log("list edited :>>", target, p, newValue, receiver);
+        target[p] = newValue;
+        return true;
+    },
+});
 window.list = list;
 
 const listEl = document.getElementById("list") as HTMLUListElement;
@@ -22,19 +29,17 @@ export function save() {
         list[value.textContent || "nothing"] = value.getAttribute("href");
     });
     console.log(list); */
-    localStorage.setItem("list", JSON.stringify(window.list));
+    localStorage.setItem("list", JSON.stringify(list));
 
     message.add("Saved!", "success");
 }
 
+//load
 window.addEventListener("DOMContentLoaded", () => {
-    //load
-    const list = new Proxy(window.list, {});
-
     for (const key in list) {
-        const li = document.createElement("li-component");
+        const li = new LiComponent(key);
         li.setAttribute("is", "li-component");
-        li.setAttribute("key", key);
         listEl.appendChild(li);
+        li.setAttribute("key", key);
     }
 });
