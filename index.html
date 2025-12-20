@@ -10,22 +10,19 @@
     <title>Index</title>
     <!-- polyfill -->
     <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0"></script>
+    <script type="module" src="./src/liComponent.ts"></script>
 </head>
 
 <body>
     <label title="Click to keep light"><input type="checkbox" checked class="d-none" />
-        <h1>Index</h1>
+        <h1 class="right-moving-bg">Index</h1>
     </label>
     <hr />
-    <div id="nemu">
-        <button type="button" id="add">Add</button>
-        <button type="button" id="remove" onclick="message.add('Drag the link here to remove it!')">
-            Remove
-        </button>
-    </div>
     <ul id="list">
-        <!-- <li is="li-component"></li> -->
+        <li is=li-component href="article://1" key="1"></li>
+        <li is=li-component href="article://2" key="2"></li>
     </ul>
+    <article></article>
     <canvas id="meteorCanvas"></canvas>
     <div id="music">
         <iframe title="music" id="musicFr" src="about:blank"></iframe>
@@ -62,19 +59,10 @@
             <span class="detail"></span>
         </div>
     </div>
-
-    <pre id="poem" class="hide"></pre>
-    <!-- <script>
-        fetch("/poem.txt").then(async (value) => {
-            document.getElementById("poem").innerHTML = await value.text();
-            /* .split("\n")
-                .join("<br>"); */
-        });
-    </script> -->
+    <footer>(c) Li Chunlai 1688BC-6888CE  All rights reserved</footer>
 </body>
-<script type="module" src="/src/main.js"></script>
-<script type="module" src="/src/meteor.js"></script>
-<script type="module" src="/src/music.js"></script>
-<script type="module" src="/src/edit.js"></script>
+<script type="module" src="/src/main.ts"></script>
+<script type="module" src="/src/meteor.ts"></script>
+<script type="module" src="/src/music.ts"></script>
 
 </html>

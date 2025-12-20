@@ -4,6 +4,14 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch localhost",
+            "url": "http://localhost:5173/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
 
         {
             "type": "node-terminal",

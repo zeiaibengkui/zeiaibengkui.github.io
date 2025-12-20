@@ -1,4 +1,3 @@
-import { getElementIndex, parser } from "./util";
 
 export default class LiComponent extends HTMLLIElement {
     constructor(key:string) {
@@ -12,40 +11,27 @@ export default class LiComponent extends HTMLLIElement {
 
     connectedCallback() {
         console.log("Created LiComponent",this);
-
-        this.a = document.createElement("a");
-        this.li = this;
-        this.a.setAttribute("href", "https://");
-        const textNode = document.createTextNode("Title");
-        this.a.appendChild(textNode);
-        this.li.appendChild(this.a);
-        // this.appendChild(parser(/*HTML*/`<button>Edit</button>`,"text/html"))
-
-        //Draggable
-        function draggable(li: HTMLLIElement) {
-            const a = li.children[0] as HTMLLinkElement;
-            a.setAttribute("draggable", "false");
-            li.setAttribute("draggable", "true");
-            li.addEventListener("dragstart", (e) => {
-                e.dataTransfer?.setData("Index", getElementIndex(e.target as HTMLElement).toString());
-                e.dataTransfer!.dropEffect = "move";
-                //e.dataTransfer?.setDragImage((e.target as Element).children[0],0,0)
-            });
-        }
-        draggable(this.li);
+        this.appendChild(this.a);
+        console.log(this.a);
+        
     }
 
     disconnectedCallback() {
         //implementation
     }
 
-    static observedAttributes = ["key"];
-    attributeChangedCallback(name, oldVal, newVal) {
-        if (name == "key") {
-            this.a.setAttribute("href", window.list[newVal]);
+    static observedAttributes = ["key","href"];
+    attributeChangedCallback(name: string, oldVal: string, newVal: string) {
+        if (name.includes("key")) {
             this.a.textContent = newVal;
         }
-        console.log(name);
+        if (name === "href") {
+            this.a.setAttribute("href", newVal);
+            this.a.textContent = newVal;
+            console.log(this.a.textContent );
+            
+        }
+        console.log("li component attr ",name,newVal);
     }
 
     adoptedCallback() {
@@ -55,5 +41,6 @@ export default class LiComponent extends HTMLLIElement {
     edit() {
     }
 }
+console.log(LiComponent);
 
-window.customElements.define("li-component", LiComponent, { extends: "li" }); //Edit
+window.customElements.define("li-component", LiComponent, { extends:"li" }); //Edit
