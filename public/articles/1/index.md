@@ -1,6 +1,6 @@
 # This is for test use
 
-please place your passage in `/articles`.
+please place your passage in `/public/articles`.
 
 ## A British joke
 

@@ -3,3 +3,6 @@ export function getElementIndex(element: HTMLElement): number {
 }
 
 export const parser = (new DOMParser()).parseFromString
+
+
+export const isGithubIO = location.href.includes("github.io")
