@@ -182,7 +182,33 @@ body > footer {
   opacity: 0.7;
 }
 
-
 article {
   max-width: 80em;
+}
+
+/* 旋转加载图标样式 */
+.loading {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite,wait-in 1s;
+  display: inline-block;
+  margin: auto 2rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wait-in {
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

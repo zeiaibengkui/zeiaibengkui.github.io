@@ -36,11 +36,13 @@ window.addEventListener("click", async (e) => {
     { ...{ duration: 300, easing: "ease-out" }, direction: "normal" }
   );
 
-  let r = await (await fetch(href + "/index.md")).text();
-  r = r.replaceAll("%path%", href);
-  const html = await marked(r);
-  
+  let r = fetch(href + "/index.md");
+
   disappear.onfinish = async () => {
+    articleEl.innerHTML = /*html*/`<div class=loading></div>`;
+    let t = await (await r).text();
+    t = t.replaceAll("%path%", href);
+    const html = await marked(t);
     articleEl.innerHTML = html;
 
     // 播放出现动画
@@ -50,7 +52,7 @@ window.addEventListener("click", async (e) => {
           transform: "perspective(800px) translateZ(0)",
           filter: "blur(0)",
           opacity: 1,
-          transformOrigin: "center 0vh",
+          transformOrigin: "center -20vh",
         },
         {
           transform: "perspective(800px) translateZ(-25px)",
@@ -60,7 +62,7 @@ window.addEventListener("click", async (e) => {
         },
       ],
       {
-        ...{ duration: 300, easing: "ease-in" },
+        easing: "ease-in",
         direction: "reverse",
         duration: 1200,
       }
