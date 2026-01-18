@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div id="md" v-html="text"></div>
-  <BInput type="text" id="baseurl-input" v-model="baseURL" />
+  <!-- <BInput type="text" id="baseurl-input" v-model="baseURL" /> -->
 </template>
 
 <style lang="scss">
@@ -54,6 +54,6 @@ const reload = async () => {
   text.value = await a.text();
   text.value = (await processor.process(text.value)).toString();
 };
-reload();
-watch(baseURL, reload);
+await reload();
+// watch(baseURL, reload);
 </script>

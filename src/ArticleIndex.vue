@@ -1,4 +1,8 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+await new Promise((res) => {
+  res(1);
+});
+</script>
 
 <template>
   <BListGroup>
