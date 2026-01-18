@@ -14,15 +14,12 @@ declare module 'vue' {
     BApp: typeof import('bootstrap-vue-next/components/BApp')['BApp']
     BBreadcrumb: typeof import('bootstrap-vue-next/components/BBreadcrumb')['BBreadcrumb']
     BBreadcrumbItem: typeof import('bootstrap-vue-next/components/BBreadcrumb')['BBreadcrumbItem']
-    BContainer: typeof import('bootstrap-vue-next/components/BContainer')['BContainer']
     BListGroup: typeof import('bootstrap-vue-next/components/BListGroup')['BListGroup']
     BListGroupItem: typeof import('bootstrap-vue-next/components/BListGroup')['BListGroupItem']
-    BNav: typeof import('bootstrap-vue-next/components/BNav')['BNav']
     BNavbar: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbar']
     BNavbarBrand: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbarBrand']
     BNavbarNav: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbarNav']
     BNavItem: typeof import('bootstrap-vue-next/components/BNav')['BNavItem']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
@@ -30,7 +27,5 @@ declare module 'vue' {
     IconTooling: typeof import('./src/components/icons/IconTooling.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
-    WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }
