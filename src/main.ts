@@ -5,7 +5,7 @@ import "./assets/main.scss";
 import $ from "jquery";
 import "jquery.ripples";
 
-window.$ = $;
+(window as unknown as { $: JQueryStatic }).$ = $;
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";

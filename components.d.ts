@@ -14,6 +14,7 @@ declare module 'vue' {
     BApp: typeof import('bootstrap-vue-next/components/BApp')['BApp']
     BBreadcrumb: typeof import('bootstrap-vue-next/components/BBreadcrumb')['BBreadcrumb']
     BBreadcrumbItem: typeof import('bootstrap-vue-next/components/BBreadcrumb')['BBreadcrumbItem']
+    BInput: typeof import('bootstrap-vue-next/components/BFormInput')['BInput']
     BListGroup: typeof import('bootstrap-vue-next/components/BListGroup')['BListGroup']
     BListGroupItem: typeof import('bootstrap-vue-next/components/BListGroup')['BListGroupItem']
     BNavbar: typeof import('bootstrap-vue-next/components/BNavbar')['BNavbar']
