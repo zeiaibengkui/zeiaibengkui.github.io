@@ -5,7 +5,7 @@ await new Promise((res) => {
 </script>
 
 <template>
-  <BListGroup>
+  <BListGroup flush>
     <BListGroupItem to="/article/test.md">test.md</BListGroupItem>
     <BListGroupItem to="/article/1.md">1.md</BListGroupItem>
     <BListGroupItem to="/article/bili.md">bili.md</BListGroupItem>
