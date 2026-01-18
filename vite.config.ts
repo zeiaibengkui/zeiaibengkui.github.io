@@ -9,6 +9,10 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
+    Components({
+      resolvers: [BootstrapVueNextResolver(),],
+      dts: true,
+    }),
   ],
   resolve: {
     alias: {
@@ -16,3 +20,8 @@ export default defineConfig({
     },
   },
 })
+
+import Components from 'unplugin-vue-components/vite'
+import { BootstrapVueNextResolver } from 'bootstrap-vue-next/resolvers'
+
+

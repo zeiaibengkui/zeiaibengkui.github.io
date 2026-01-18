@@ -1,0 +1,39 @@
+.bounce-enter-active {
+    animation: bounce-in 1s ease-out;
+}
+
+.bounce-leave-active {
+    animation: bounce-out 0.3s ease-out ;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: perspective(800px) translateZ(-25px);
+        filter: blur(2px);
+        opacity: 0;
+        transform-origin: center 200vh;
+    }
+
+    100% {
+        transform: perspective(800px) translateZ(0);
+        filter: blur(0);
+        opacity: 1;
+        transform-origin: center 20vh;
+    }
+}
+
+@keyframes bounce-out {
+    100% {
+        transform: perspective(800px) translateZ(-25px);
+        filter: blur(2px);
+        opacity: 0;
+        transform-origin: center 0vh;
+    }
+
+    0% {
+        transform: perspective(800px) translateZ(0);
+        filter: blur(0);
+        opacity: 1;
+        transform-origin: center 0vh;
+    }
+}
