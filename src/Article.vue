@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div id="md" class="heti" v-html="text"></div>
+  <div id="md" class="heti heti--serif" v-html="text"></div>
   <!-- <BInput type="text" id="baseurl-input" v-model="baseURL" /> -->
 </template>
 
