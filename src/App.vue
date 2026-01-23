@@ -56,10 +56,4 @@ watch(
     text-align: center;
   }
 }
-
-body[data-bs-theme="light"] {
-  #app {
-    background: #ccc;
-  }
-}
 </style>

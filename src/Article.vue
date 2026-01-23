@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div id="md" v-html="text"></div>
+  <div id="md" class="heti" v-html="text"></div>
   <!-- <BInput type="text" id="baseurl-input" v-model="baseURL" /> -->
 </template>
 
@@ -32,7 +32,7 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
-import { watch } from "vue";
+// import Heti from "heti/js/heti-addon.js"
 const processor = unified()
   .use(remarkParse)
   .use(remarkDirective)
@@ -53,6 +53,9 @@ const reload = async () => {
   const a = await fetch((baseURL.value + route.params.articleURL) as string);
   text.value = await a.text();
   text.value = (await processor.process(text.value)).toString();
+
+  /*   const heti = new Heti('.heti');
+    heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压 */
 };
 await reload();
 // watch(baseURL, reload);

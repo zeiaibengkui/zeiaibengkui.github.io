@@ -14,6 +14,9 @@ importers:
       bootstrap-vue-next:
         specifier: ^0.42.0
         version: 0.42.0(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
+      heti:
+        specifier: ^0.9.6
+        version: 0.9.6
       jquery:
         specifier: ^3.7.1
         version: 3.7.1
@@ -1654,6 +1657,12 @@ packages:
 
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
+
+  heti-findandreplacedomtext@0.5.0:
+    resolution: {integrity: sha512-GFZjqU8LAdu1uR72GqrReI+lzNLMlcWtvdz1TKNJiofyo1mfTecFYSZEoEbcLcRMl+KwEldnNQoS4BwO8wtg0A==}
+
+  heti@0.9.6:
+    resolution: {integrity: sha512-HdfW9QENMp0j54mgrRqEMJ4oa9CmhvrbRk9ijr1IGqxCmVa8Z8ENftHowCSSC2unAL+Qbglu8k8OLneuNV0jeQ==}
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -4412,6 +4421,12 @@ snapshots:
       hast-util-parse-selector: 4.0.0
       property-information: 7.1.0
       space-separated-tokens: 2.0.2
+
+  heti-findandreplacedomtext@0.5.0: {}
+
+  heti@0.9.6:
+    dependencies:
+      heti-findandreplacedomtext: 0.5.0
 
   hookable@5.5.3: {}
 

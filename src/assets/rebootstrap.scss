@@ -1,0 +1,9 @@
+[data-bs-theme="dark"] {
+  --bs-body-bg: #00000000
+}
+
+body[data-bs-theme="light"] {
+  #app {
+    background: var(--bs-body-bg);
+  }
+}

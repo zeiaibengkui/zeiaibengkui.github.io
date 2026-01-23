@@ -1,5 +1,6 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "heti/umd/heti.min.css"
 import "./assets/main.scss";
 
 import $ from "jquery";
