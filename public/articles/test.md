@@ -1,5 +1,16 @@
 # Markdown Tutorial
 
+cato: tutorial
+
+lables
+- markdown
+- learning
+- guide
+
+time: 2024-01-12
+
+<!--Here starts the main text-->
+
 Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It's widely used for documentation, README files, and blogging.
 
 ## Table of Contents
@@ -90,7 +101,7 @@ console.log('Hello, world!');
 
 ```markdown
 | Header 1 | Header 2 |
-|----------|----------|
+| -------- | -------- |
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
 ```

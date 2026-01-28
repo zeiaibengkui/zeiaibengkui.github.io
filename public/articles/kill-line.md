@@ -1,4 +1,15 @@
-### **The 'Kill Line' Metaphor: A Cultural Insight and a Different Conversation**
+# The 'Kill Line' Metaphor: A Cultural Insight and a Different Conversation
+
+cato: social-commentary
+
+lables
+- culture
+- economics
+- analysis
+
+time: 2024-01-18
+
+<!--Here starts the main text-->
 
 If you’ve spent any time on Chinese social media recently, you’ll have encountered the vivid and somewhat jarring metaphor of the **“kill line”** (斩杀线). Borrowed from the precise terminology of gaming, it describes the precarious point at which an American individual or family, battered by medical debt, job loss, or sheer economic fragility, is seen to fall into irreversible ruin.
 

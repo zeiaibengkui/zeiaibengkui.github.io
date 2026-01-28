@@ -1,0 +1,88 @@
+{
+  "articles": [
+    {
+      "filename": "1.md",
+      "title": "记",
+      "brief": "\"妈，你说咱家穷不穷？\"",
+      "cato": "philosophy",
+      "lables": [
+        "reflection",
+        "dialogue"
+      ],
+      "time": "2024-01-15",
+      "length": 1
+    },
+    {
+      "filename": "INDEX.md",
+      "title": "Article Index",
+      "brief": "\"妈，你说咱家穷不穷？\"",
+      "cato": "uncategorized",
+      "lables": [],
+      "length": 2
+    },
+    {
+      "filename": "METADATA.md",
+      "title": "Article Metadata Format",
+      "brief": "The article index generation script automatically parses markdown files in the `public/articles/` directory. To ensure your articles are properly i...",
+      "cato": "category-name",
+      "lables": [
+        "label1",
+        "label2",
+        "label3"
+      ],
+      "time": "2024-01-15",
+      "length": 3
+    },
+    {
+      "filename": "TheWorldFunction.md",
+      "title": "追寻世界函数：从不动点到热寂的诗意漫游",
+      "brief": "当你开始认真思考这个问题，你就踏上了一场奇异的旅程——从决定论的坚实土地出发，穿过量子不确定性的迷雾，最终抵达宇宙终结处的哲学悬崖。",
+      "cato": "philosophy",
+      "lables": [
+        "physics",
+        "cosmology",
+        "reflection"
+      ],
+      "time": "2024-01-20",
+      "length": 7
+    },
+    {
+      "filename": "bili.md",
+      "title": "Bilibili",
+      "brief": "(No brief)",
+      "cato": "media",
+      "lables": [
+        "video",
+        "bilibili"
+      ],
+      "time": "2024-01-10",
+      "length": 1
+    },
+    {
+      "filename": "kill-line.md",
+      "title": "The 'Kill Line' Metaphor: A Cultural Insight and a Different Conversation",
+      "brief": "If you’ve spent any time on Chinese social media recently, you’ll have encountered the vivid and somewhat jarring metaphor of the **“kill line”** (...",
+      "cato": "social-commentary",
+      "lables": [
+        "culture",
+        "economics",
+        "analysis"
+      ],
+      "time": "2024-01-18",
+      "length": 6
+    },
+    {
+      "filename": "test.md",
+      "title": "Markdown Tutorial",
+      "brief": "Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It's widely used for documentation, README files, ...",
+      "cato": "tutorial",
+      "lables": [
+        "markdown",
+        "learning",
+        "guide"
+      ],
+      "time": "2024-01-12",
+      "length": 2
+    }
+  ]
+}

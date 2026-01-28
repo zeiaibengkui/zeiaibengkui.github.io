@@ -1,6 +1,17 @@
->[https://chat.deepseek.com/share/t67khanazpr330gbll](https://chat.deepseek.com/share/t67khanazpr330gbll)
-
 # 追寻世界函数：从不动点到热寂的诗意漫游
+
+cato: philosophy
+
+lables
+- physics
+- cosmology
+- reflection
+
+time: 2024-01-20
+
+<!--Here starts the main text-->
+
+>[https://chat.deepseek.com/share/t67khanazpr330gbll](https://chat.deepseek.com/share/t67khanazpr330gbll)
 
 > 在某个不眠的深夜，你推开窗，任由宇宙的凉风灌入斗室。一个问题如流萤般划过脑海：这浩瀚无边的世界，是否也遵循着一个简洁的法则，一个能将此刻的星辰、尘埃与心跳，精准映射到下一瞬间的“世界函数”？
 

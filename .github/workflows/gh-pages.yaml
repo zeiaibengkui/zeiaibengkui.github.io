@@ -38,6 +38,8 @@ jobs:
                   node-version: 22
             - name: Install dependencies
               run: npm install
+            - name: Generate article index
+              run: npm run gen:index
             - name: Build
               run: npm run build
             - name: Setup Pages
