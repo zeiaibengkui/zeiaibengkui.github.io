@@ -38,16 +38,8 @@ More content...
 
 ## Index Generation
 
-The script generates two files:
-
-1. **`public/articles/index.ts`** - TypeScript export with article data
-   - Used for programmatic access in Vue components
+**`public/articles/index.json`** - JSON export with article data
    - Contains interface definition and articles array
-
-2. **`public/articles/INDEX.md`** - Markdown documentation
-   - Human-readable index
-   - Links to each article
-   - Shows all metadata
 
 ## Automatic Generation
 
@@ -62,4 +54,3 @@ Articles are indexed automatically when:
 - Brief is truncated to 150 characters if longer
 - File size is shown in KB
 - Articles are sorted by filename
-- The `template.md` file is excluded from the index

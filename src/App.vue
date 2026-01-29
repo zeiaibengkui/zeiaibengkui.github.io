@@ -10,14 +10,23 @@
       <BContainer>
         <RouteURLNav />
 
-        <Suspense>
-          <router-view v-slot="{ Component }">
-            <transition name="bounce" mode="out-in" :key="$route.name">
-              <component :is="Component" />
-            </transition>
-          </router-view>
-          <template #fallback> Loading </template>
-        </Suspense>
+        <RouterView v-slot="{ Component }">
+          <template v-if="Component">
+            <Transition mode="out-in" name="bounce" :key="$route.fullPath">
+              <!-- <KeepAlive> -->
+              <Suspense>
+                <!-- main content -->
+                <component :is="Component"></component>
+
+                <!-- loading state -->
+                <template #fallback>
+                  Loading...
+                </template>
+              </Suspense>
+              <!-- </KeepAlive> -->
+            </Transition>
+          </template>
+        </RouterView>
       </BContainer>
     </main>
     <footer id="footer">(c) Copyright Lichunlai 2025</footer>

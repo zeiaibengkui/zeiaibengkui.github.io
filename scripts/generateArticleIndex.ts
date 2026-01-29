@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-interface Article {
+export interface Article {
   filename: string
   title: string
   brief: string
@@ -9,6 +9,20 @@ interface Article {
   lables: string[]
   time?: string
   length: number
+}
+
+export interface CategoryIndex {
+  name: string
+  color: string
+  count: number
+  articles: string[] // filenames
+}
+
+export interface LabelIndex {
+  name: string
+  color: string
+  count: number
+  articles: string[] // filenames
 }
 
 function extractMetadata(content: string): {
@@ -56,7 +70,6 @@ function extractMetadata(content: string): {
 
 function extractBrief(content: string): string {
   const lines = content.split('\n')
-  let inMainText = false
   let brief = ''
 
   for (const line of lines) {
@@ -76,7 +89,7 @@ function extractBrief(content: string): string {
       brief = line.trim()
       // Limit to first 150 chars
       if (brief.length > 150) {
-        brief = brief.substring(0, 147) + '...'
+        brief = brief.substring(0, 147) + '……'
       }
       break
     }
@@ -90,6 +103,16 @@ function getFileSize(filePath: string): number {
   return Math.ceil(stat.size / 1024) // Return size in KB
 }
 
+function generateColor(index: number): string {
+  const colors = [
+    '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6',
+    '#EC4899', '#06B6D4', '#84CC16', '#F97316', '#6366F1',
+    '#14B8A6', '#A855F7', '#F43F5E', '#22D3EE', '#EAB308',
+    '#DC2626', '#7C3AED', '#059669', '#D97706', '#DB2777'
+  ]
+  return colors[index % colors.length]
+}
+
 function generateIndex() {
   const articlesDir = path.join(process.cwd(), 'public/articles')
   const files = fs.readdirSync(articlesDir)
@@ -97,6 +120,8 @@ function generateIndex() {
     .sort()
 
   const articles: Article[] = []
+  const categoryMap = new Map<string, string[]>() // cato -> filenames
+  const labelMap = new Map<string, string[]>() // label -> filenames
 
   for (const file of files) {
     const filePath = path.join(articlesDir, file)
@@ -115,37 +140,59 @@ function generateIndex() {
       time: metadata.time,
       length
     })
+
+    // Build category index
+    const cato = metadata.cato || 'uncategorized'
+    if (!categoryMap.has(cato)) {
+      categoryMap.set(cato, [])
+    }
+    categoryMap.get(cato)!.push(file)
+
+    // Build label index
+    for (const label of metadata.lables) {
+      if (!labelMap.has(label)) {
+        labelMap.set(label, [])
+      }
+      labelMap.get(label)!.push(file)
+    }
+  }
+
+  // Generate category index
+  const categories: object = {}
+  let colorIndex = 0
+  for (const [name, articleFiles] of Array.from(categoryMap.entries()).sort((a, b) => a[0].localeCompare(b[0]))) {
+    categories[name]=({
+      color: generateColor(colorIndex++),
+      count: articleFiles.length,
+      articles: articleFiles
+    })
+  }
+
+  // Generate label index
+  const labels: object = {}
+  colorIndex = 0
+  for (const [name, articleFiles] of Array.from(labelMap.entries()).sort((a, b) => a[0].localeCompare(b[0]))) {
+    labels[name]=({
+      color: generateColor(colorIndex++),
+      count: articleFiles.length,
+      articles: articleFiles
+    })
   }
 
   // Generate JSON export
-  const jsonContent = JSON.stringify({ articles }, null, 2)
-
-  // Generate Markdown index
-  const mdContent = `# Article Index
-
-${articles.map(article => `
-## [${article.title}](/articles/${article.filename})
-
-- **Category**: ${article.cato}
-- **Labels**: ${article.lables.length > 0 ? article.lables.join(', ') : 'none'}
-- **Time**: ${article.time || 'N/A'}
-- **Length**: ${article.length} KB
-
-${article.brief}
-
----
-`).join('\n')}
-`
+  const jsonContent = JSON.stringify({ 
+    articles,
+    categories,
+    labels
+  }, null, 2)
 
   // Write JSON file
   fs.writeFileSync(path.join(articlesDir, 'index.json'), jsonContent)
+
   console.log('Generated: public/articles/index.json')
-
-  // Write Markdown index
-  fs.writeFileSync(path.join(articlesDir, 'INDEX.md'), mdContent)
-  console.log('Generated: public/articles/INDEX.md')
-
-  console.log(`\nTotal articles indexed: ${articles.length}`)
+  console.log(`Total articles indexed: ${articles.length}`)
+  console.log(`Categories: ${Object.keys(categories)}`)
+  console.log(`Labels: ${Object.keys(labels)}`)
 }
 
 generateIndex()

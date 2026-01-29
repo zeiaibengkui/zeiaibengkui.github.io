@@ -7,3 +7,17 @@ body[data-bs-theme="light"] {
     background: var(--bs-body-bg);
   }
 }
+
+* {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--bs-primary) transparent;
+}
+
+a[href] {
+  text-decoration: underline transparent;
+  transition: all .2s;
+
+  &:hover {
+    text-decoration: underline currentColor;
+  }
+}

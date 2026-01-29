@@ -1,17 +1,76 @@
 <script lang="ts" setup>
-await new Promise((res) => {
-  res(1);
-});
+import type { Article, CategoryIndex, LabelIndex } from './articles'
+import CatoLabel from './components/CatoLabel.vue'
+const props = defineProps<{ num?: number }>()
+
+const a = await fetch("/articles/index.json")
+const index = await a.json()
+let articles: Article[] = index.articles!
+articles = articles.slice(0, props.num)
+const catoIndex: { [key: string]: CategoryIndex } = index.categories!
+const labelIndex: { [key: string]: LabelIndex } = index.labels!
+console.log(articles, catoIndex, labelIndex);
+
 </script>
 
 <template>
-  <BListGroup class="list-unstyled">
-    <BListGroupItem to="/articles/test.md">test.md</BListGroupItem>
-    <BListGroupItem to="/articles/1.md">1.md</BListGroupItem>
-    <BListGroupItem to="/articles/bili.md">bili.md</BListGroupItem>
-    <BListGroupItem to="/articles/kill-line.md">kill line.md</BListGroupItem>
-    <BListGroupItem to="/articles/TheWorldFunction.md">世界函数存在与否的哲学探讨.md</BListGroupItem>
-  </BListGroup>
+  <ul class="list-unstyled">
+    <li v-for="(article) in articles" :key="article.filename">
+      <RouterLink :to="`/articles/${article.filename}`">
+        <BCard no-body class="mb-3" style="max-width: 540px">
+          <BCardBody :title="article.title">
+            <BCardText>
+              <div class="labels mb-1">
+                <cato-label class="cato" :name="article.cato" :index="catoIndex" />
+                <cato-label class="label" :name="label" :index="labelIndex" v-for="label in article.lables"
+                  :key="label" />
+              </div>
+              {{ article.brief }}
+              <a class="continue">Continue -></a>
+            </BCardText>
+          </BCardBody>
+        </BCard>
+      </RouterLink>
+    </li>
+    <li v-if="num">
+      <RouterLink to="/articles">
+        <BCard style="width: max-content;">
+          <h3 class="d-flex align-items-center justify-content-center h-100">Explore More -></h3>
+        </BCard>
+      </RouterLink>
+    </li>
+  </ul>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ul {
+  margin: auto;
+  width: max-content;
+}
+
+.continue {
+  float: right;
+  opacity: 0;
+  transition: .3s;
+}
+
+li:hover .continue {
+  opacity: .5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.card {
+  height: 100%;
+
+  &:hover {
+    background-color: #ffffff35;
+  }
+}
+
+li>a {
+  text-decoration: none !important;
+}
+</style>

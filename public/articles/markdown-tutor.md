@@ -15,16 +15,23 @@ Markdown is a lightweight markup language for creating formatted text using a pl
 
 ## Table of Contents
 
-1. [Headings](#headings)
-2. [Emphasis](#emphasis)
-3. [Lists](#lists)
-4. [Links](#links)
-5. [Images](#images)
-6. [Code](#code)
-7. [Blockquotes](#blockquotes)
-8. [Tables](#tables)
-9. [Horizontal Rules](#horizontal-rules)
-10. [Escaping Characters](#escaping-characters)
+- [Markdown Tutorial](#markdown-tutorial)
+  - [Table of Contents](#table-of-contents)
+  - [Headings](#headings)
+  - [Emphasis](#emphasis)
+  - [Lists](#lists)
+    - [Unordered List](#unordered-list)
+    - [Ordered List](#ordered-list)
+  - [Links](#links)
+  - [Images](#images)
+  - [Code](#code)
+    - [Inline Code](#inline-code)
+    - [Code Block](#code-block)
+  - [Blockquotes](#blockquotes)
+  - [Tables](#tables)
+  - [Horizontal Rules](#horizontal-rules)
+  - [Escaping Characters](#escaping-characters)
+  - [Conclusion](#conclusion)
 
 ---
 
@@ -54,6 +61,10 @@ Use `#` for headings. The number of `#` symbols indicates the heading level.
     - Subitem
 * Another item
 ```
+- Item 1
+- Item 2
+    - Subitem
+* Another item
 
 ### Ordered List
 
@@ -62,12 +73,16 @@ Use `#` for headings. The number of `#` symbols indicates the heading level.
 2. Second item
      1. Subitem
 ```
+1. First item
+2. Second item
+     1. Subitem
 
 ## Links
 
 ```markdown
 [Link Text](https://example.com)
 ```
+[Link Text](https://example.com)
 
 ## Images
 
@@ -96,6 +111,8 @@ console.log('Hello, world!');
 > This is a blockquote.
 >> Nested blockquote.
 ```
+> This is a blockquote.
+>> Nested blockquote.
 
 ## Tables
 
@@ -105,6 +122,10 @@ console.log('Hello, world!');
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
 ```
+| Header 1 | Header 2 |
+| -------- | -------- |
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
 
 ## Horizontal Rules
 
@@ -115,6 +136,9 @@ Three or more dashes, asterisks, or underscores:
 ***
 ___
 ```
+---
+***
+___
 
 ## Escaping Characters
 
@@ -123,6 +147,7 @@ Use a backslash `\` before special characters:
 ```markdown
 \*Not italic\*
 ```
+\*Not italic\*
 
 ---
 

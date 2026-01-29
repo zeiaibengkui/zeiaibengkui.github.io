@@ -1,29 +1,9 @@
 {
   "articles": [
     {
-      "filename": "1.md",
-      "title": "记",
-      "brief": "\"妈，你说咱家穷不穷？\"",
-      "cato": "philosophy",
-      "lables": [
-        "reflection",
-        "dialogue"
-      ],
-      "time": "2024-01-15",
-      "length": 1
-    },
-    {
-      "filename": "INDEX.md",
-      "title": "Article Index",
-      "brief": "\"妈，你说咱家穷不穷？\"",
-      "cato": "uncategorized",
-      "lables": [],
-      "length": 2
-    },
-    {
-      "filename": "METADATA.md",
+      "filename": "!template.md",
       "title": "Article Metadata Format",
-      "brief": "The article index generation script automatically parses markdown files in the `public/articles/` directory. To ensure your articles are properly i...",
+      "brief": "The article index generation script automatically parses markdown files in the `public/articles/` directory. To ensure your articles are properly i……",
       "cato": "category-name",
       "lables": [
         "label1",
@@ -31,7 +11,7 @@
         "label3"
       ],
       "time": "2024-01-15",
-      "length": 3
+      "length": 2
     },
     {
       "filename": "TheWorldFunction.md",
@@ -61,7 +41,7 @@
     {
       "filename": "kill-line.md",
       "title": "The 'Kill Line' Metaphor: A Cultural Insight and a Different Conversation",
-      "brief": "If you’ve spent any time on Chinese social media recently, you’ll have encountered the vivid and somewhat jarring metaphor of the **“kill line”** (...",
+      "brief": "If you’ve spent any time on Chinese social media recently, you’ll have encountered the vivid and somewhat jarring metaphor of the **“kill line”** (……",
       "cato": "social-commentary",
       "lables": [
         "culture",
@@ -72,9 +52,9 @@
       "length": 6
     },
     {
-      "filename": "test.md",
+      "filename": "markdown-tutor.md",
       "title": "Markdown Tutorial",
-      "brief": "Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It's widely used for documentation, README files, ...",
+      "brief": "Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It's widely used for documentation, README files, ……",
       "cato": "tutorial",
       "lables": [
         "markdown",
@@ -82,7 +62,165 @@
         "guide"
       ],
       "time": "2024-01-12",
-      "length": 2
+      "length": 3
+    },
+    {
+      "filename": "why-am-not-i-born-to-be-rich.md",
+      "title": "记",
+      "brief": "\"妈，你说咱家穷不穷？\"",
+      "cato": "philosophy",
+      "lables": [
+        "reflection",
+        "dialogue"
+      ],
+      "time": "2024-01-15",
+      "length": 1
     }
-  ]
+  ],
+  "categories": {
+    "category-name": {
+      "color": "#3B82F6",
+      "count": 1,
+      "articles": [
+        "!template.md"
+      ]
+    },
+    "media": {
+      "color": "#10B981",
+      "count": 1,
+      "articles": [
+        "bili.md"
+      ]
+    },
+    "philosophy": {
+      "color": "#F59E0B",
+      "count": 2,
+      "articles": [
+        "TheWorldFunction.md",
+        "why-am-not-i-born-to-be-rich.md"
+      ]
+    },
+    "social-commentary": {
+      "color": "#EF4444",
+      "count": 1,
+      "articles": [
+        "kill-line.md"
+      ]
+    },
+    "tutorial": {
+      "color": "#8B5CF6",
+      "count": 1,
+      "articles": [
+        "markdown-tutor.md"
+      ]
+    }
+  },
+  "labels": {
+    "analysis": {
+      "color": "#3B82F6",
+      "count": 1,
+      "articles": [
+        "kill-line.md"
+      ]
+    },
+    "bilibili": {
+      "color": "#10B981",
+      "count": 1,
+      "articles": [
+        "bili.md"
+      ]
+    },
+    "cosmology": {
+      "color": "#F59E0B",
+      "count": 1,
+      "articles": [
+        "TheWorldFunction.md"
+      ]
+    },
+    "culture": {
+      "color": "#EF4444",
+      "count": 1,
+      "articles": [
+        "kill-line.md"
+      ]
+    },
+    "dialogue": {
+      "color": "#8B5CF6",
+      "count": 1,
+      "articles": [
+        "why-am-not-i-born-to-be-rich.md"
+      ]
+    },
+    "economics": {
+      "color": "#EC4899",
+      "count": 1,
+      "articles": [
+        "kill-line.md"
+      ]
+    },
+    "guide": {
+      "color": "#06B6D4",
+      "count": 1,
+      "articles": [
+        "markdown-tutor.md"
+      ]
+    },
+    "label1": {
+      "color": "#84CC16",
+      "count": 1,
+      "articles": [
+        "!template.md"
+      ]
+    },
+    "label2": {
+      "color": "#F97316",
+      "count": 1,
+      "articles": [
+        "!template.md"
+      ]
+    },
+    "label3": {
+      "color": "#6366F1",
+      "count": 1,
+      "articles": [
+        "!template.md"
+      ]
+    },
+    "learning": {
+      "color": "#14B8A6",
+      "count": 1,
+      "articles": [
+        "markdown-tutor.md"
+      ]
+    },
+    "markdown": {
+      "color": "#A855F7",
+      "count": 1,
+      "articles": [
+        "markdown-tutor.md"
+      ]
+    },
+    "physics": {
+      "color": "#F43F5E",
+      "count": 1,
+      "articles": [
+        "TheWorldFunction.md"
+      ]
+    },
+    "reflection": {
+      "color": "#22D3EE",
+      "count": 2,
+      "articles": [
+        "TheWorldFunction.md",
+        "why-am-not-i-born-to-be-rich.md"
+      ]
+    },
+    "video": {
+      "color": "#EAB308",
+      "count": 1,
+      "articles": [
+        "bili.md"
+      ]
+    }
+  }
 }
