@@ -25,7 +25,8 @@ console.log(articles, catoIndex, labelIndex);
                 <cato-label class="label" :name="label" :index="labelIndex" v-for="label in article.lables"
                   :key="label" />
               </div>
-              {{ article.brief }}
+              {{ article.brief }}<br>
+              <small class="text-body-secondary">{{ article.time }}</small>
               <a class="continue">Continue -></a>
             </BCardText>
           </BCardBody>

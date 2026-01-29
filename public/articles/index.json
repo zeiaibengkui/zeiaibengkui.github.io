@@ -1,17 +1,16 @@
 {
   "articles": [
     {
-      "filename": "!template.md",
-      "title": "Article Metadata Format",
-      "brief": "The article index generation script automatically parses markdown files in the `public/articles/` directory. To ensure your articles are properly i……",
-      "cato": "category-name",
+      "filename": "高一上学期期末考试.md",
+      "title": "Final Exam in Grade 1,First Term",
+      "brief": "Analyze my study.",
+      "cato": "study",
       "lables": [
-        "label1",
-        "label2",
-        "label3"
+        "emo",
+        "encourage"
       ],
-      "time": "2024-01-15",
-      "length": 2
+      "time": "1/29/26",
+      "length": 1
     },
     {
       "filename": "TheWorldFunction.md",
@@ -27,18 +26,6 @@
       "length": 7
     },
     {
-      "filename": "bili.md",
-      "title": "Bilibili",
-      "brief": "(No brief)",
-      "cato": "media",
-      "lables": [
-        "video",
-        "bilibili"
-      ],
-      "time": "2024-01-10",
-      "length": 1
-    },
-    {
       "filename": "kill-line.md",
       "title": "The 'Kill Line' Metaphor: A Cultural Insight and a Different Conversation",
       "brief": "If you’ve spent any time on Chinese social media recently, you’ll have encountered the vivid and somewhat jarring metaphor of the **“kill line”** (……",
@@ -50,6 +37,31 @@
       ],
       "time": "2024-01-18",
       "length": 6
+    },
+    {
+      "filename": "!template.md",
+      "title": "Article Title",
+      "brief": "Your article content starts here. The first paragraph after the metadata will be used as the brief description in the index.",
+      "cato": "category-name",
+      "lables": [
+        "label1",
+        "label2",
+        "label3"
+      ],
+      "time": "2024-01-15",
+      "length": 1
+    },
+    {
+      "filename": "why-am-not-i-born-to-be-rich.md",
+      "title": "记",
+      "brief": "\"妈，你说咱家穷不穷？\"",
+      "cato": "philosophy",
+      "lables": [
+        "reflection",
+        "dialogue"
+      ],
+      "time": "2024-01-15",
+      "length": 1
     },
     {
       "filename": "markdown-tutor.md",
@@ -65,15 +77,15 @@
       "length": 3
     },
     {
-      "filename": "why-am-not-i-born-to-be-rich.md",
-      "title": "记",
-      "brief": "\"妈，你说咱家穷不穷？\"",
-      "cato": "philosophy",
+      "filename": "bili.md",
+      "title": "Bilibili",
+      "brief": "(No brief)",
+      "cato": "media",
       "lables": [
-        "reflection",
-        "dialogue"
+        "video",
+        "bilibili"
       ],
-      "time": "2024-01-15",
+      "time": "2024-01-10",
       "length": 1
     }
   ],
@@ -107,8 +119,15 @@
         "kill-line.md"
       ]
     },
-    "tutorial": {
+    "study": {
       "color": "#8B5CF6",
+      "count": 1,
+      "articles": [
+        "高一上学期期末考试.md"
+      ]
+    },
+    "tutorial": {
+      "color": "#EC4899",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
@@ -158,57 +177,71 @@
         "kill-line.md"
       ]
     },
-    "guide": {
+    "emo": {
       "color": "#06B6D4",
+      "count": 1,
+      "articles": [
+        "高一上学期期末考试.md"
+      ]
+    },
+    "encourage": {
+      "color": "#84CC16",
+      "count": 1,
+      "articles": [
+        "高一上学期期末考试.md"
+      ]
+    },
+    "guide": {
+      "color": "#F97316",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "label1": {
-      "color": "#84CC16",
-      "count": 1,
-      "articles": [
-        "!template.md"
-      ]
-    },
-    "label2": {
-      "color": "#F97316",
-      "count": 1,
-      "articles": [
-        "!template.md"
-      ]
-    },
-    "label3": {
       "color": "#6366F1",
       "count": 1,
       "articles": [
         "!template.md"
       ]
     },
-    "learning": {
+    "label2": {
       "color": "#14B8A6",
+      "count": 1,
+      "articles": [
+        "!template.md"
+      ]
+    },
+    "label3": {
+      "color": "#A855F7",
+      "count": 1,
+      "articles": [
+        "!template.md"
+      ]
+    },
+    "learning": {
+      "color": "#F43F5E",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "markdown": {
-      "color": "#A855F7",
+      "color": "#22D3EE",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "physics": {
-      "color": "#F43F5E",
+      "color": "#EAB308",
       "count": 1,
       "articles": [
         "TheWorldFunction.md"
       ]
     },
     "reflection": {
-      "color": "#22D3EE",
+      "color": "#DC2626",
       "count": 2,
       "articles": [
         "TheWorldFunction.md",
@@ -216,7 +249,7 @@
       ]
     },
     "video": {
-      "color": "#EAB308",
+      "color": "#7C3AED",
       "count": 1,
       "articles": [
         "bili.md"

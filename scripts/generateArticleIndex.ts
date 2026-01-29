@@ -75,7 +75,7 @@ function extractBrief(content: string): string {
   for (const line of lines) {
     // Skip metadata and HTML
     if (line.startsWith('cato:') || line.startsWith('lables') || line.startsWith('labels') ||
-        line.startsWith('time:') || line.startsWith('<!--') || line.startsWith('#')) {
+      line.startsWith('time:') || line.startsWith('<!--') || line.startsWith('#')) {
       continue
     }
 
@@ -161,7 +161,7 @@ function generateIndex() {
   const categories: object = {}
   let colorIndex = 0
   for (const [name, articleFiles] of Array.from(categoryMap.entries()).sort((a, b) => a[0].localeCompare(b[0]))) {
-    categories[name]=({
+    categories[name] = ({
       color: generateColor(colorIndex++),
       count: articleFiles.length,
       articles: articleFiles
@@ -172,15 +172,30 @@ function generateIndex() {
   const labels: object = {}
   colorIndex = 0
   for (const [name, articleFiles] of Array.from(labelMap.entries()).sort((a, b) => a[0].localeCompare(b[0]))) {
-    labels[name]=({
+    labels[name] = ({
       color: generateColor(colorIndex++),
       count: articleFiles.length,
       articles: articleFiles
     })
   }
 
+  // Sort Articles by time
+  articles.sort((a, b) => {
+    // Handle cases where time might be undefined
+    if (!a.time && !b.time) return 0;
+    if (!a.time) return 1; // Put articles without time at the end
+    if (!b.time) return -1; // Put articles without time at the end
+
+    // Convert time strings to Date objects for comparison
+    const timeA = new Date(a.time).getTime();
+    const timeB = new Date(b.time).getTime();
+
+    // Sort in descending order (newest first)
+    return timeB - timeA;
+  });
+
   // Generate JSON export
-  const jsonContent = JSON.stringify({ 
+  const jsonContent = JSON.stringify({
     articles,
     categories,
     labels
