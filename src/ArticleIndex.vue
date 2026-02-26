@@ -1,15 +1,10 @@
 <script lang="ts" setup>
-import type { Article, CategoryIndex, LabelIndex } from './articles'
 import CatoLabel from './components/CatoLabel.vue'
+import { useArticleStore } from './stores/article';
 const props = defineProps<{ num?: number }>()
 
-const a = await fetch("/articles/index.json")
-const index = await a.json()
-let articles: Article[] = index.articles!
-articles = articles.slice(0, props.num)
-const catoIndex: { [key: string]: CategoryIndex } = index.categories!
-const labelIndex: { [key: string]: LabelIndex } = index.labels!
-console.log(articles, catoIndex, labelIndex);
+const { articles, catoIndex, labelIndex } = useArticleStore()
+if (props.num) articles.splice(props.num)
 
 </script>
 

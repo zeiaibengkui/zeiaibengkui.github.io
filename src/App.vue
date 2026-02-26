@@ -28,6 +28,12 @@
           </template>
         </RouterView>
       </BContainer>
+      <BContainer>
+        <Giscus repo="zeiaibengkui/zeiaibengkui.github.io" repo-id="R_kgDOQ8BJxQ" category="General"
+          category-id="DIC_kwDOQ8BJxc4C3LNU" mapping="title" strict="0" reactions-enabled="1" emit-metadata="0"
+          input-position="top" theme="" lang="en" loading="lazy" crossorigin="anonymous" async>
+        </Giscus>
+      </BContainer>
     </main>
     <footer id="footer">(c) Copyright Lichunlai 2025</footer>
   </BApp>
@@ -41,6 +47,7 @@ import WallpaperBackground from "./WallpaperBackground.vue";
 import { watch } from "vue";
 import router from "./router";
 import RouteURLNav from "./RouteURLNav.vue";
+import Giscus from "@giscus/vue"
 
 watch(
   () => useArticleStore().articleURL,

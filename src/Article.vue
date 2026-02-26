@@ -52,7 +52,10 @@ const baseURL = ref("/articles/");
 const reload = async () => {
   const a = await fetch((baseURL.value + route.params.articleURL) as string);
   text.value = await a.text();
+  document.title = text.value.split('\n').filter(a => a.startsWith("# ")).map(a => a.slice(2))[0] || "No Title"
+
   text.value = (await processor.process(text.value)).toString();
+
 
   /*   const heti = new Heti('.heti');
     heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压 */
