@@ -3,7 +3,7 @@ interface Article {
   title: string
   brief: string
   cato: string
-  lables: string[]
+  labels: string[]
   time?: string
   length: number
 }

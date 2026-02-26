@@ -2,7 +2,7 @@
 
 cato: philosophy
 
-lables
+labels
 - reflection
 - dialogue
 

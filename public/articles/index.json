@@ -5,7 +5,7 @@
       "title": "Final Exam in Grade 1,First Term",
       "brief": "Analyze my study.",
       "cato": "study",
-      "lables": [
+      "labels": [
         "emo",
         "encourage"
       ],
@@ -13,11 +13,20 @@
       "length": 1
     },
     {
+      "filename": "amisayingthetruth.md",
+      "title": "我说的是真话吗",
+      "brief": "label: 逻辑",
+      "cato": "uncategorized",
+      "labels": [],
+      "time": "2025.2.25",
+      "length": 1
+    },
+    {
       "filename": "TheWorldFunction.md",
       "title": "追寻世界函数：从不动点到热寂的诗意漫游",
       "brief": "当你开始认真思考这个问题，你就踏上了一场奇异的旅程——从决定论的坚实土地出发，穿过量子不确定性的迷雾，最终抵达宇宙终结处的哲学悬崖。",
       "cato": "philosophy",
-      "lables": [
+      "labels": [
         "physics",
         "cosmology",
         "reflection"
@@ -30,7 +39,7 @@
       "title": "The 'Kill Line' Metaphor: A Cultural Insight and a Different Conversation",
       "brief": "If you’ve spent any time on Chinese social media recently, you’ll have encountered the vivid and somewhat jarring metaphor of the **“kill line”** (……",
       "cato": "social-commentary",
-      "lables": [
+      "labels": [
         "culture",
         "economics",
         "analysis"
@@ -43,7 +52,7 @@
       "title": "Article Title",
       "brief": "Your article content starts here. The first paragraph after the metadata will be used as the brief description in the index.",
       "cato": "category-name",
-      "lables": [
+      "labels": [
         "label1",
         "label2",
         "label3"
@@ -56,7 +65,7 @@
       "title": "记",
       "brief": "\"妈，你说咱家穷不穷？\"",
       "cato": "philosophy",
-      "lables": [
+      "labels": [
         "reflection",
         "dialogue"
       ],
@@ -68,7 +77,7 @@
       "title": "Markdown Tutorial",
       "brief": "Markdown is a lightweight markup language for creating formatted text using a plain-text editor. It's widely used for documentation, README files, ……",
       "cato": "tutorial",
-      "lables": [
+      "labels": [
         "markdown",
         "learning",
         "guide"
@@ -81,7 +90,7 @@
       "title": "Bilibili",
       "brief": "(No brief)",
       "cato": "media",
-      "lables": [
+      "labels": [
         "video",
         "bilibili"
       ],
@@ -131,6 +140,13 @@
       "count": 1,
       "articles": [
         "markdown-tutor.md"
+      ]
+    },
+    "uncategorized": {
+      "color": "#06B6D4",
+      "count": 1,
+      "articles": [
+        "amisayingthetruth.md"
       ]
     }
   },

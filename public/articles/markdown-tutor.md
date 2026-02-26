@@ -2,7 +2,7 @@
 
 cato: tutorial
 
-lables
+labels
 - markdown
 - learning
 - guide

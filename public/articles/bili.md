@@ -2,7 +2,7 @@
 
 cato: media
 
-lables
+labels
 - video
 - bilibili
 

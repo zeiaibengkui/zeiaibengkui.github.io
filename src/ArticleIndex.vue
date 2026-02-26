@@ -22,7 +22,7 @@ console.log(articles, catoIndex, labelIndex);
             <BCardText>
               <div class="labels mb-1">
                 <cato-label class="cato" :name="article.cato" :index="catoIndex" />
-                <cato-label class="label" :name="label" :index="labelIndex" v-for="label in article.lables"
+                <cato-label class="label" :name="label" :index="labelIndex" v-for="label in article.labels"
                   :key="label" />
               </div>
               {{ article.brief }}<br>

@@ -2,7 +2,7 @@
 
 cato: philosophy
 
-lables
+labels
 - physics
 - cosmology
 - reflection

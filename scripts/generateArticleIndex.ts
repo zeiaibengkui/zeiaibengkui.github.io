@@ -6,7 +6,7 @@ export interface Article {
   title: string
   brief: string
   cato: string
-  lables: string[]
+  labels: string[]
   time?: string
   length: number
 }
@@ -28,13 +28,13 @@ export interface LabelIndex {
 function extractMetadata(content: string): {
   title: string
   cato: string
-  lables: string[]
+  labels: string[]
   time?: string
 } {
   const lines = content.split('\n')
   let title = ''
   let cato = ''
-  const lables: string[] = []
+  const labels: string[] = []
   let time: string | undefined
 
   // Extract title (first h1)
@@ -51,11 +51,11 @@ function extractMetadata(content: string): {
     if (line.startsWith('cato:')) {
       cato = line.replace('cato:', '').trim()
     }
-    if (line.startsWith('lables') || line.startsWith('labels')) {
+    if (line.startsWith('labels') || line.startsWith('labels')) {
       // Parse the list that follows
       i++
       while (i < lines.length && lines[i].startsWith('- ')) {
-        lables.push(lines[i].replace('- ', '').trim())
+        labels.push(lines[i].replace('- ', '').trim())
         i++
       }
       i--
@@ -65,7 +65,7 @@ function extractMetadata(content: string): {
     }
   }
 
-  return { title, cato, lables, time }
+  return { title, cato, labels, time }
 }
 
 function extractBrief(content: string): string {
@@ -74,7 +74,7 @@ function extractBrief(content: string): string {
 
   for (const line of lines) {
     // Skip metadata and HTML
-    if (line.startsWith('cato:') || line.startsWith('lables') || line.startsWith('labels') ||
+    if (line.startsWith('cato:') || line.startsWith('labels') || line.startsWith('labels') ||
       line.startsWith('time:') || line.startsWith('<!--') || line.startsWith('#')) {
       continue
     }
@@ -136,7 +136,7 @@ function generateIndex() {
       title: metadata.title || file.replace('.md', ''),
       brief,
       cato: metadata.cato || 'uncategorized',
-      lables: metadata.lables,
+      labels: metadata.labels,
       time: metadata.time,
       length
     })
@@ -149,7 +149,7 @@ function generateIndex() {
     categoryMap.get(cato)!.push(file)
 
     // Build label index
-    for (const label of metadata.lables) {
+    for (const label of metadata.labels) {
       if (!labelMap.has(label)) {
         labelMap.set(label, [])
       }

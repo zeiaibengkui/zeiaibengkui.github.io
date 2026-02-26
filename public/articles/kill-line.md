@@ -2,7 +2,7 @@
 
 cato: social-commentary
 
-lables
+labels
 - culture
 - economics
 - analysis
