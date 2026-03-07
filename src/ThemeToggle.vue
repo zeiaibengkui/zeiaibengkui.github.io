@@ -1,6 +1,6 @@
 <template>
     <BNavbarNav>
-        <BNavItem @click="theme.toggleTheme()">{{ theme.themeStr }}</BNavItem>
+        <BNavItem href="javascript:void(0)" @click="theme.toggleTheme()">{{ theme.themeStr }}</BNavItem>
     </BNavbarNav>
 </template>
 
