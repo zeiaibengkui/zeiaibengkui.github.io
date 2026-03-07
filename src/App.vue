@@ -41,20 +41,11 @@
 <script lang="ts" setup>
 import { BContainer } from "bootstrap-vue-next";
 import ThemeToggle from "./ThemeToggle.vue";
-import { useArticleStore } from "./stores/article";
 import { RouterView } from "vue-router";
 import WallpaperBackground from "./WallpaperBackground.vue";
-import { watch } from "vue";
-import router from "./router";
 import RouteURLNav from "./RouteURLNav.vue";
 import Giscus from "@giscus/vue"
 
-watch(
-  () => useArticleStore().articleURL,
-  (v) => {
-    router.push(v);
-  },
-);
 </script>
 <style lang="scss">
 #app {

@@ -1,22 +1,20 @@
 <template>
     <BNavbarNav>
-        <BNavItem @click="isLight = !isLight">{{ isLight ? 'light' : 'dark' }}</BNavItem>
+        <BNavItem @click="theme.toggleTheme()">{{ theme.themeStr }}</BNavItem>
     </BNavbarNav>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
+import { useThemeStore } from './stores/colorTheme'
 
-const isLight = ref(false)
-function changeTheme() {
-    document.body.dataset.bsTheme = isLight.value ? 'light' : 'dark'
-}
+const theme = useThemeStore()
 
-isLight.value = !!localStorage.getItem('theme')
-if (isLight.value) changeTheme()
-watch(isLight, changeTheme)
-
-window.addEventListener('beforeunload', () => {
-    localStorage.setItem('theme', isLight.value ? 'true' : '')
-})
+watch(
+    () => theme.themeStr,
+    (themeStr) => {
+        document.body.dataset.bsTheme = themeStr
+    },
+    { immediate: true }
+)
 </script>

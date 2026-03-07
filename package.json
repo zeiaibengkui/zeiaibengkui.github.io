@@ -26,6 +26,7 @@
     "jquery": "^3.7.1",
     "jquery.ripples": "^0.6.3",
     "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.1",
     "rehype-format": "^5.0.1",
     "rehype-raw": "^7.0.0",
     "rehype-sanitize": "^6.0.0",
