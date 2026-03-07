@@ -8,24 +8,26 @@ const { articles, catoIndex, labelIndex } = useArticleStore()
 
 <template>
   <ul class="list-unstyled">
-    <li v-for="(article, index) in articles" :key="article.filename">
-      <RouterLink :to="`/articles/${article.filename}`" v-if="!props.num || index < props.num">
-        <BCard no-body class="mb-3" style="max-width: 540px">
-          <BCardBody :title="article.title">
-            <BCardText>
-              <div class="labels mb-1">
-                <cato-label class="cato" :name="article.cato" :index="catoIndex" />
-                <cato-label class="label" :name="label" :index="labelIndex" v-for="label in article.labels"
-                  :key="label" />
-              </div>
-              {{ article.brief }}<br>
-              <small class="text-body-secondary">{{ article.time }}</small>
-              <a class="continue">Continue -></a>
-            </BCardText>
-          </BCardBody>
-        </BCard>
-      </RouterLink>
-    </li>
+    <template v-for="(article, index) in articles" :key="article.filename">
+      <li v-if="!props.num || index < props.num">
+        <RouterLink :to="`/articles/${article.filename}`">
+          <BCard no-body class="mb-3" style="max-width: 540px">
+            <BCardBody :title="article.title">
+              <BCardText>
+                <div class="labels mb-1">
+                  <cato-label class="cato" :name="article.cato" :index="catoIndex" />
+                  <cato-label class="label" :name="label" :index="labelIndex" v-for="label in article.labels"
+                    :key="label" />
+                </div>
+                {{ article.brief }}<br>
+                <small class="text-body-secondary">{{ article.time }}</small>
+                <a class="continue">Continue -></a>
+              </BCardText>
+            </BCardBody>
+          </BCard>
+        </RouterLink>
+      </li>
+    </template>
     <li v-if="num">
       <RouterLink to="/articles">
         <BCard style="width: max-content;">
