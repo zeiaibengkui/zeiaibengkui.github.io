@@ -85,10 +85,10 @@ class Meteor {
 class Star {
     x: number = window.innerWidth * Math.random()
     y: number = window.innerHeight * Math.random()
-    baseOpacity: number = (Math.random().toFixed(2) as unknown as number) - 0
+    phi: number = (Math.random().toFixed(2) as unknown as number) - 0
     opacity: number | string = 0
     color: string = `rgb(255,255,255,${this.opacity})`
-    speed: number = Math.random()
+    omega: number = Math.random()
 
     draw() {
         ctx.fillStyle = this.color
@@ -96,7 +96,7 @@ class Star {
     }
 
     update() {
-        this.opacity = Math.cos(this.baseOpacity * 360 + time * 0.002 * this.speed)
+        this.opacity = Math.cos(this.phi * 360 + time * 0.002 * this.omega)
         this.color = `rgb(255,255,255,${this.opacity})`
     }
 
@@ -129,11 +129,6 @@ function moon() {
 function animate(newTimestamp: number) {
     defTime = newTimestamp - time
     time = newTimestamp
-    /*     if (time >= 360) {
-                                                                        time = 0;
-                                                                        console.log("360!");
-                                                                    } */
-
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
     //moon();

@@ -6,8 +6,8 @@ import { createMemoryHistory, createRouter, createWebHashHistory, createWebHisto
 
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),
-  // history: createMemoryHistory(),
-  history: createWebHashHistory(),
+  history: createMemoryHistory(),
+  // history: createWebHashHistory(),
   routes: [
     {
       path: "/articles",
