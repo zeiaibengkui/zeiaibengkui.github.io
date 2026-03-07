@@ -4,14 +4,12 @@ import { useArticleStore } from './stores/article';
 const props = defineProps<{ num?: number }>()
 
 const { articles, catoIndex, labelIndex } = useArticleStore()
-if (props.num) articles.splice(props.num)
-
 </script>
 
 <template>
   <ul class="list-unstyled">
-    <li v-for="(article) in articles" :key="article.filename">
-      <RouterLink :to="`/articles/${article.filename}`">
+    <li v-for="(article, index) in articles" :key="article.filename">
+      <RouterLink :to="`/articles/${article.filename}`" v-if="!props.num || index < props.num">
         <BCard no-body class="mb-3" style="max-width: 540px">
           <BCardBody :title="article.title">
             <BCardText>

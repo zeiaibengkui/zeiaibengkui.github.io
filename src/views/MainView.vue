@@ -9,7 +9,8 @@ import AboutView from './AboutView.vue';
     <div>
         <h2>Recent</h2>
         <Suspense>
-            <ArticleIndex class="d-flex overflow-auto w-100 gap-3" style="height: min-content;" :num="3" />
+            <ArticleIndex :key="'MainView-ArticleIndex-3'" class="d-flex overflow-auto w-100 gap-3"
+                style="height: min-content;" :num="3" />
         </Suspense>
         <br><br>
         <AboutView></AboutView>
