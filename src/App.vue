@@ -35,7 +35,7 @@
         </Giscus>
       </BContainer>
     </main>
-    <footer id="footer">(c) Copyright Lichunlai 2025</footer>
+    <footer id="footer">(c) Lichunlai 2025 <br> Articles are shared under CC BY-SA license.</footer>
   </BApp>
 </template>
 <script lang="ts" setup>
@@ -61,6 +61,7 @@ import Giscus from "@giscus/vue"
     position: sticky;
     top: 100%;
     text-align: center;
+    margin: 2rem;
   }
 }
 </style>
