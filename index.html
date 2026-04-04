@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
@@ -8,6 +8,7 @@
     <!-- KaTeX CSS for math rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <style>
+body{background:black;}
 #loading {
   background: linear-gradient(90deg, #aaa 25%, #bff 50%, #aaa 75%);
   background-size: 200% 100%;
@@ -37,8 +38,10 @@
     </style>
   </head>
   <body data-bs-theme="dark">
-    <div id="loading" style="display:block">Loading...</div>
+    <div id="loading" style="">Loading...</div>
     <div id="app"></div>
-    <script type="module" src="/src/main.ts" onload="loading.style.display='none'"></script>
+    <script type="module" src="/src/main.ts"></script>
+    <script>
+    </script>
   </body>
 </html>

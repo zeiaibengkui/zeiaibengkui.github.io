@@ -22,3 +22,5 @@ app.use(pinia);
 app.use(router);
 
 app.mount("#app");
+
+document.querySelector("#loading").style.display="none";
