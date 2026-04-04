@@ -15,8 +15,8 @@
     {
       "filename": "amisayingthetruth.md",
       "title": "我说的是真话吗",
-      "brief": "label: 逻辑",
-      "cato": "uncategorized",
+      "brief": "“我说的是假话”有逻辑矛盾",
+      "cato": "逻辑",
       "labels": [],
       "time": "2025.2.25",
       "length": 1
@@ -96,6 +96,28 @@
       ],
       "time": "2024-01-10",
       "length": 1
+    },
+    {
+      "filename": "I love decision trees.md",
+      "title": "树犹如此，人何以堪：决策树——防止算力霸权的社会主义算法",
+      "brief": "我是一个决策树的死忠粉。",
+      "cato": "social",
+      "labels": [
+        "funny",
+        "machine learning"
+      ],
+      "length": 7
+    },
+    {
+      "filename": "intergrade.md",
+      "title": "Intergrade",
+      "brief": "导数的定义是函数在某一点处的瞬时变化率，数学表达式为 f'(x) = lim(h→0) [f(x+h) - f(x)] / h。",
+      "cato": "learn",
+      "labels": [
+        "math",
+        "Intergrade"
+      ],
+      "length": 1
     }
   ],
   "categories": {
@@ -106,44 +128,58 @@
         "!template.md"
       ]
     },
-    "media": {
+    "learn": {
       "color": "#10B981",
+      "count": 1,
+      "articles": [
+        "intergrade.md"
+      ]
+    },
+    "media": {
+      "color": "#F59E0B",
       "count": 1,
       "articles": [
         "bili.md"
       ]
     },
     "philosophy": {
-      "color": "#F59E0B",
+      "color": "#EF4444",
       "count": 2,
       "articles": [
         "TheWorldFunction.md",
         "why-am-not-i-born-to-be-rich.md"
       ]
     },
+    "social": {
+      "color": "#8B5CF6",
+      "count": 1,
+      "articles": [
+        "I love decision trees.md"
+      ]
+    },
     "social-commentary": {
-      "color": "#EF4444",
+      "color": "#EC4899",
       "count": 1,
       "articles": [
         "kill-line.md"
       ]
     },
     "study": {
-      "color": "#8B5CF6",
+      "color": "#06B6D4",
       "count": 1,
       "articles": [
         "高一上学期期末考试.md"
       ]
     },
     "tutorial": {
-      "color": "#EC4899",
+      "color": "#84CC16",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
-    "uncategorized": {
-      "color": "#06B6D4",
+    "逻辑": {
+      "color": "#F97316",
       "count": 1,
       "articles": [
         "amisayingthetruth.md"
@@ -207,57 +243,85 @@
         "高一上学期期末考试.md"
       ]
     },
-    "guide": {
+    "funny": {
       "color": "#F97316",
+      "count": 1,
+      "articles": [
+        "I love decision trees.md"
+      ]
+    },
+    "guide": {
+      "color": "#6366F1",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
-    "label1": {
-      "color": "#6366F1",
-      "count": 1,
-      "articles": [
-        "!template.md"
-      ]
-    },
-    "label2": {
+    "Intergrade": {
       "color": "#14B8A6",
       "count": 1,
       "articles": [
-        "!template.md"
+        "intergrade.md"
       ]
     },
-    "label3": {
+    "label1": {
       "color": "#A855F7",
       "count": 1,
       "articles": [
         "!template.md"
       ]
     },
-    "learning": {
+    "label2": {
       "color": "#F43F5E",
       "count": 1,
       "articles": [
-        "markdown-tutor.md"
+        "!template.md"
       ]
     },
-    "markdown": {
+    "label3": {
       "color": "#22D3EE",
+      "count": 1,
+      "articles": [
+        "!template.md"
+      ]
+    },
+    "learning": {
+      "color": "#EAB308",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
+    "machine learning": {
+      "color": "#DC2626",
+      "count": 1,
+      "articles": [
+        "I love decision trees.md"
+      ]
+    },
+    "markdown": {
+      "color": "#7C3AED",
+      "count": 1,
+      "articles": [
+        "markdown-tutor.md"
+      ]
+    },
+    "math": {
+      "color": "#059669",
+      "count": 1,
+      "articles": [
+        "intergrade.md"
+      ]
+    },
     "physics": {
-      "color": "#EAB308",
+      "color": "#D97706",
       "count": 1,
       "articles": [
         "TheWorldFunction.md"
       ]
     },
     "reflection": {
-      "color": "#DC2626",
+      "color": "#DB2777",
       "count": 2,
       "articles": [
         "TheWorldFunction.md",
@@ -265,7 +329,7 @@
       ]
     },
     "video": {
-      "color": "#7C3AED",
+      "color": "#3B82F6",
       "count": 1,
       "articles": [
         "bili.md"

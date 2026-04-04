@@ -1,6 +1,19 @@
 import fs from 'fs'
 import path from 'path'
 
+/**
+ * Normalize LaTeX math delimiters:
+ * - \[ \] → $$ (display math)
+ * - \( \) → $ (inline math)
+ */
+export function normalizeLatexDelimiters(content: string): string {
+  return content
+    .replace(/\\\[/g, '$$$$')
+    .replace(/\\\]/g, '$$$$')
+    .replace(/\\\(/g, '$')
+    .replace(/\\\)/g, '$')
+}
+
 export interface Article {
   filename: string
   title: string
@@ -125,7 +138,14 @@ function generateIndex() {
 
   for (const file of files) {
     const filePath = path.join(articlesDir, file)
-    const content = fs.readFileSync(filePath, 'utf-8')
+    const rawContent = fs.readFileSync(filePath, 'utf-8')
+    const content = normalizeLatexDelimiters(rawContent)
+
+    // Write normalized content back to file if changed
+    if (content !== rawContent) {
+      fs.writeFileSync(filePath, content, 'utf-8')
+      console.log(`Normalized LaTeX delimiters: ${file}`)
+    }
 
     const metadata = extractMetadata(content)
     const brief = extractBrief(content)
