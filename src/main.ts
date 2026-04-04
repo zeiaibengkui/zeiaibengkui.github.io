@@ -3,11 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "heti/umd/heti.min.css"
 import "./assets/main.scss";
 
-import $ from "jquery";
-import "jquery.ripples";
-
-(window as unknown as { $: JQueryStatic }).$ = $;
-
+// import $ from "jquery";
+// import "jquery.ripples";
+//
+// (window as unknown as { $: JQueryStatic }).$ = $;
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
