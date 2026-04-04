@@ -7,9 +7,38 @@
     <title>Vite App</title>
     <!-- KaTeX CSS for math rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <style>
+#loading {
+  background: linear-gradient(90deg, #aaa 25%, #bff 50%, #aaa 75%);
+  background-size: 200% 100%;
+  border-radius: 20px;
+  animation: slideWidth 12s ease-out,slideBg 2.4s infinite linear;
+  margin:0;
+  padding: .5rem;
+  box-sizing: border-box;
+}
+@keyframes slideWidth {
+  0% {
+      width:12em;
+  }
+  100% {
+      width:100%;
+  }
+}
+
+@keyframes slideBg {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+    </style>
   </head>
   <body data-bs-theme="dark">
+    <div id="loading" style="display:block">Loading...</div>
     <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/main.ts" onload="loading.style.display='none'"></script>
   </body>
 </html>
