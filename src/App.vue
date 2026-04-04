@@ -3,7 +3,7 @@
     <WallpaperBackground />
 
     <BNavbar id="nav" class="shadow mb-3">
-      <BNavbarBrand>Blog2</BNavbarBrand>
+      <BNavbarBrand href="//chunl.ai">Blog2</BNavbarBrand>
       <ThemeToggle />
     </BNavbar>
     <main id="main">

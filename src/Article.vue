@@ -1,23 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div id="md" class="heti heti--serif" v-html="text"></div>
-  <!-- <BInput type="text" id="baseurl-input" v-model="baseURL" /> -->
+    <div id="md" class="heti heti--serif"  v-html="text"></div>
 </template>
-
-<style lang="scss">
-#md {
-  margin: 2em 0;
-}
-
-#baseurl-input {
-  opacity: 0.2;
-  transition: 0.2s;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-</style>
 
 <script setup lang="ts">
 import { ref } from "vue";
@@ -32,7 +16,7 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
-// import Heti from "heti/js/heti-addon.js"
+
 const processor = unified()
   .use(remarkParse)
   .use(remarkDirective)
@@ -42,24 +26,31 @@ const processor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeRaw)
   .use(rehypeFormat)
-  // .use(rehypeSanitize)
   .use(rehypeStringify);
 
 const text = ref("Markdown");
 const route = useRoute();
-console.log(route.params);
 const baseURL = ref("/articles/");
+const precompiledURL = ref("/precompiled/");
+
 const reload = async () => {
-  const a = await fetch((baseURL.value + route.params.articleURL) as string);
-  text.value = await a.text();
-  document.title = text.value.split('\n').filter(a => a.startsWith("# ")).map(a => a.slice(2))[0] || "No Title"
+  const articleURL = route.params.articleURL as string;
 
-  text.value = (await processor.process(text.value)).toString();
+  // Try precompiled HTML first
+  const precompiledResponse = await fetch(precompiledURL.value + articleURL.replace('.md', '.html'));
 
-
-  /*   const heti = new Heti('.heti');
-    heti.autoSpacing(); // 自动进行中西文混排美化和标点挤压 */
+  if (precompiledResponse.ok) {
+    // Use precompiled HTML
+    text.value = await precompiledResponse.text();
+  } else {
+    // Fall back to runtime markdown processing
+    console.log('Precompiled HTML not found, using runtime processing:', articleURL);
+    const mdResponse = await fetch(baseURL.value + articleURL);
+    text.value = await mdResponse.text();
+    document.title = text.value.split('\n').filter(a => a.startsWith("# ")).map(a => a.slice(2))[0] || "No Title"
+    text.value = (await processor.process(text.value)).toString();
+  }
 };
+
 await reload();
-// watch(baseURL, reload);
 </script>

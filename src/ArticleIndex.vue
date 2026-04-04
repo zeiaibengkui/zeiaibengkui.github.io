@@ -11,7 +11,7 @@ const { articles, catoIndex, labelIndex } = useArticleStore()
     <template v-for="(article, index) in articles" :key="article.filename">
       <li v-if="!props.num || index < props.num">
         <RouterLink :to="`/articles/${article.filename}`">
-          <BCard no-body class="mb-3" style="max-width: 540px">
+        <BCard no-body class="mb-3" :style="{maxWidth: '540px',width:props.num?'max-content':'100%'}">
             <BCardBody :title="article.title">
               <BCardText>
                 <div class="labels mb-1">
