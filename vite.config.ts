@@ -21,14 +21,14 @@ export default defineConfig({
       gzipSize: true,    // 统计 Gzip 压缩后的大小
       brotliSize: true,  // 统计 Brotli 压缩后的大小
     }),
-    importToCDN({
-      // 指定你的 CDN 供应商，这里以 unpkg 为例，它会自动使用 fastly 网络
-      prodUrl: 'https://unpkg.com/{name}@{version}/{path}',
-      modules: [
-        // 使用 autoComplete 功能，自动补全配置
-        autoComplete("vue"),
-      ]
-    }),
+    // importToCDN({
+    //   // 指定你的 CDN 供应商，这里以 unpkg 为例，它会自动使用 fastly 网络
+    //   prodUrl: 'https://unpkg.com/{name}@{version}/{path}',
+    //   modules: [
+    //     // 使用 autoComplete 功能，自动补全配置
+    //     autoComplete("vue"),
+    //   ]
+    // }),
   ],
   resolve: {
     alias: {
