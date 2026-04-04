@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div id="md" class="heti heti--serif"  v-html="text"></div>
+    <div id="md" class="heti"  v-html="text"></div>
 </template>
 
 <script setup lang="ts">
