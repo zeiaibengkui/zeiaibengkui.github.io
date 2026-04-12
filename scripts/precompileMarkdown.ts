@@ -11,7 +11,7 @@ import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
-
+import rehypeStarryNight from 'rehype-starry-night'
 /**
  * Normalize LaTeX math delimiters:
  * - \[ \] → $$ (display math)
@@ -91,6 +91,7 @@ const processor = unified()
   .use(rehypeRaw)
   .use(rehypeKatex)
   .use(rehypeFormat)
+  .use(rehypeStarryNight)
   .use(rehypeStringify)
 
 async function precompileMarkdown() {

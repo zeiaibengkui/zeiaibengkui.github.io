@@ -2,7 +2,6 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "heti/umd/heti.min.css";
 import "./assets/main.scss";
-
 // import $ from "jquery";
 // import "jquery.ripples";
 //
@@ -22,4 +21,4 @@ app.use(router);
 
 app.mount("#app");
 
-document.querySelector("div#loading").style.display = "none";
+document.querySelector("body>div#loading")?.style.setProperty("display", "none")
