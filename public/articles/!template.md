@@ -3,6 +3,7 @@
 cato: category-name
 
 labels
+
 - label1
 - label2
 - label3

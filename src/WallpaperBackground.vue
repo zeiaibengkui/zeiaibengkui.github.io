@@ -1,7 +1,7 @@
 <template>
-    <span>
-        <!--WallpaperBackground.vue 占位符-->
-    </span>
+  <span>
+    <!--WallpaperBackground.vue 占位符-->
+  </span>
 </template>
 
 <script lang="ts" setup>
@@ -16,93 +16,93 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 class Meteor {
-    length: number = 0
-    angle: number = Math.PI / 6
-    x: number = 0
-    y: number = 0
-    color: Array<string> = ['255', '255', '255']
-    speed: number = 0
+  length: number = 0
+  angle: number = Math.PI / 6
+  x: number = 0
+  y: number = 0
+  color: Array<string> = ['255', '255', '255']
+  speed: number = 0
 
-    constructor() {
-        this.init()
+  constructor() {
+    this.init()
+  }
+
+  randomColor() {
+    const a = Math.ceil(255 - 240 * Math.random())
+    //中段颜色
+    return 'rgba(' + a + ',' + a + ',' + a + ',1)'
+  }
+
+  init() {
+    this.length = (Math.random() * 50 + 50) * vmin
+    this.x = Math.random() * -5 * window.innerWidth
+    this.y = Math.random() * -5 * window.innerHeight
+
+    this.color = ['white', this.randomColor(), 'transparent']
+
+    this.speed = (Math.random() * 0.15 + 0.7) * defTime
+    //console.log(this.speed);
+  }
+
+  update() {
+    this.x += this.speed * Math.cos(this.angle)
+    this.y += this.speed * Math.sin(this.angle)
+    if (this.x + this.length > canvas.width && this.y - this.length > canvas.height) {
+      this.init() // 重新初始化
     }
+  }
 
-    randomColor() {
-        const a = Math.ceil(255 - 240 * Math.random())
-        //中段颜色
-        return 'rgba(' + a + ',' + a + ',' + a + ',1)'
-    }
+  draw() {
+    ctx.beginPath()
+    ctx.moveTo(this.x, this.y)
+    const lingrad = ctx.createLinearGradient(
+      this.x,
+      this.y,
+      this.x - this.width(),
+      this.y - this.height(),
+    )
 
-    init() {
-        this.length = (Math.random() * 50 + 50) * vmin
-        this.x = Math.random() * -5 * window.innerWidth
-        this.y = Math.random() * -5 * window.innerHeight
+    lingrad.addColorStop(0, this.color[0]!)
+    lingrad.addColorStop(0.3, this.color[1]!)
+    lingrad.addColorStop(0.6, this.color[2]!)
+    ctx.strokeStyle = lingrad
 
-        this.color = ['white', this.randomColor(), 'transparent']
+    ctx.lineTo(this.x - this.width(), this.y - this.height())
 
-        this.speed = (Math.random() * 0.15 + 0.7) * defTime
-        //console.log(this.speed);
-    }
+    ctx.lineWidth = 3
+    ctx.stroke()
+  }
 
-    update() {
-        this.x += this.speed * Math.cos(this.angle)
-        this.y += this.speed * Math.sin(this.angle)
-        if (this.x + this.length > canvas.width && this.y - this.length > canvas.height) {
-            this.init() // 重新初始化
-        }
-    }
+  height() {
+    return this.length * Math.sin(this.angle)
+  }
 
-    draw() {
-        ctx.beginPath()
-        ctx.moveTo(this.x, this.y)
-        const lingrad = ctx.createLinearGradient(
-            this.x,
-            this.y,
-            this.x - this.width(),
-            this.y - this.height(),
-        )
-
-        lingrad.addColorStop(0, this.color[0]!)
-        lingrad.addColorStop(0.3, this.color[1]!)
-        lingrad.addColorStop(0.6, this.color[2]!)
-        ctx.strokeStyle = lingrad
-
-        ctx.lineTo(this.x - this.width(), this.y - this.height())
-
-        ctx.lineWidth = 3
-        ctx.stroke()
-    }
-
-    height() {
-        return this.length * Math.sin(this.angle)
-    }
-
-    width() {
-        return this.length * Math.cos(this.angle)
-    }
+  width() {
+    return this.length * Math.cos(this.angle)
+  }
 }
 
 class Star {
-    x: number = window.innerWidth * Math.random()
-    y: number = window.innerHeight * Math.random()
-    phi: number = (Math.random().toFixed(2) as unknown as number) - 0
-    opacity: number | string = 0
-    color: string = `rgb(255,255,255,${this.opacity})`
-    omega: number = Math.random()
+  x: number = window.innerWidth * Math.random()
+  y: number = window.innerHeight * Math.random()
+  phi: number = (Math.random().toFixed(2) as unknown as number) - 0
+  opacity: number | string = 0
+  color: string = `rgb(255,255,255,${this.opacity})`
+  omega: number = Math.random()
 
-    draw() {
-        ctx.fillStyle = this.color
-        ctx.fillText('.', this.x, this.y)
-    }
+  draw() {
+    ctx.fillStyle = this.color
+    ctx.fillText('.', this.x, this.y)
+  }
 
-    update() {
-        this.opacity = Math.cos(this.phi * 360 + time * 0.002 * this.omega)
-        this.color = `rgb(255,255,255,${this.opacity})`
-    }
+  update() {
+    this.opacity = Math.cos(this.phi * 360 + time * 0.002 * this.omega)
+    this.color = `rgb(255,255,255,${this.opacity})`
+  }
 
-    constructor() {
-        //console.log(this);
-    }
+  constructor() {
+    //console.log(this);
+  }
 }
 
 let meteors: Array<Meteor> = []
@@ -110,13 +110,13 @@ let stars: Array<Star> = []
 initArray()
 
 function initArray() {
-    meteors = stars = []
-    for (let i = 0; i < vmin / 50 + 3; i++) {
-        meteors.push(new Meteor())
-        for (let index = 0; index < Math.random() * 20 + 20; index++) {
-            stars.push(new Star())
-        }
+  meteors = stars = []
+  for (let i = 0; i < vmin / 50 + 3; i++) {
+    meteors.push(new Meteor())
+    for (let index = 0; index < Math.random() * 20 + 20; index++) {
+      stars.push(new Star())
     }
+  }
 }
 
 /* const img = new Image();
@@ -127,29 +127,29 @@ function moon() {
 } */
 
 function animate(newTimestamp: number) {
-    defTime = newTimestamp - time
-    time = newTimestamp
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+  defTime = newTimestamp - time
+  time = newTimestamp
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    //moon();
-    meteors.forEach((meteor) => {
-        meteor.update()
-        meteor.draw()
-    })
-    stars.forEach((star) => {
-        star.update()
-        star.draw()
-    })
+  //moon();
+  meteors.forEach((meteor) => {
+    meteor.update()
+    meteor.draw()
+  })
+  stars.forEach((star) => {
+    star.update()
+    star.draw()
+  })
 
-    requestAnimationFrame(animate)
+  requestAnimationFrame(animate)
 }
 animate(time)
 
 window.addEventListener('resize', () => {
-    vmin = Math.min(window.innerHeight, window.innerWidth) / 100
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-    initArray()
+  vmin = Math.min(window.innerHeight, window.innerWidth) / 100
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+  initArray()
 })
 /* $('body').ripples({
     resolution: 512,
@@ -159,9 +159,9 @@ window.addEventListener('resize', () => {
 </script>
 <style lang="css">
 #bg {
-    position: fixed;
-    inset: 0 0 0 0;
-    background: #000;
-    z-index: -1;
+  position: fixed;
+  inset: 0 0 0 0;
+  background: #000;
+  z-index: -1;
 }
 </style>

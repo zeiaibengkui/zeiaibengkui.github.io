@@ -1,6 +1,6 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "heti/umd/heti.min.css"
+import "heti/umd/heti.min.css";
 import "./assets/main.scss";
 
 // import $ from "jquery";
@@ -10,7 +10,6 @@ import "./assets/main.scss";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
-
 import App from "./App.vue";
 import router from "./router";
 
@@ -23,4 +22,4 @@ app.use(router);
 
 app.mount("#app");
 
-document.querySelector("#loading").style.display="none";
+document.querySelector("div#loading").style.display = "none";
