@@ -39,7 +39,7 @@ jobs:
             - name: Install dependencies
               run: npm install
             - name: Setup Playwright
-              run: pnpm exec playwright install --with-deps
+              run: npm exec playwright install --with-deps
             - name: Build
               run: npm run build
             - name: Setup Pages
