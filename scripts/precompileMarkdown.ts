@@ -12,6 +12,7 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 import rehypeStarryNight from 'rehype-starry-night'
+import rehypeMermaid from 'rehype-mermaid'
 /**
  * Normalize LaTeX math delimiters:
  * - \[ \] → $$ (display math)
@@ -92,6 +93,7 @@ const processor = unified()
   .use(rehypeKatex)
   .use(rehypeFormat)
   .use(rehypeStarryNight)
+  .use(rehypeMermaid, { strategy: "inline-svg" })
   .use(rehypeStringify)
 
 async function precompileMarkdown() {

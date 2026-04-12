@@ -4,8 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import mermaid from "mermaid";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 const text = ref("Markdown");
 const route = useRoute();
@@ -30,9 +29,4 @@ const reload = async () => {
 };
 
 await reload();
-
-onMounted(() => {
-  mermaid.run({ querySelector: ".language-mermaid" })
-
-})
 </script>
