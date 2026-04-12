@@ -98,7 +98,7 @@ const processor = unified()
   .use(rehypeMermaid, { strategy: "inline-svg" })
   .use(rehypeStringify)
   .use(rehypeSlug)
-  .use(toc, { headings: ['h1', 'h2'] })
+  .use(toc, { headings: ['h2', 'h3'] })
 
 async function precompileMarkdown() {
   const articlesDir = path.join(process.cwd(), 'public/articles')
