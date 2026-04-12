@@ -67,7 +67,8 @@ function extractMetadata(content: string): {
     if (line.startsWith('labels') || line.startsWith('labels')) {
       // Parse the list that follows
       i++
-      while (i < lines.length && lines[i].startsWith('- ')) {
+      while (!lines[i].trim()) i++;
+      while (i < lines.length && lines[i].match(/^-\ /)) {
         labels.push(lines[i].replace('- ', '').trim())
         i++
       }
