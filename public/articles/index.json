@@ -14,6 +14,19 @@
       "length": 1
     },
     {
+      "filename": "selfref.md",
+      "title": "关于自指问题的若干研究",
+      "brief": "`我说的这句话是假话`",
+      "cato": "review",
+      "labels": [
+        "language",
+        "math",
+        "philosophy"
+      ],
+      "time": "2026-04-12",
+      "length": 3
+    },
+    {
       "filename": "高一上学期期末考试.md",
       "title": "Final Exam in Grade 1,First Term",
       "brief": "Analyze my study.",
@@ -23,15 +36,6 @@
         "encourage"
       ],
       "time": "1/29/26",
-      "length": 1
-    },
-    {
-      "filename": "amisayingthetruth.md",
-      "title": "我说的是真话吗",
-      "brief": "“我说的是假话”有逻辑矛盾",
-      "cato": "逻辑",
-      "labels": [],
-      "time": "2025.2.25",
       "length": 1
     },
     {
@@ -100,13 +104,14 @@
     {
       "filename": "CHANGELOG.md",
       "title": "李春来七天创造博客",
-      "brief": "李春来说：我要有博客！",
+      "brief": "李春来看着空空如也的`Documents`目录，说：我要有博客！",
       "cato": "funny",
       "labels": [
-        "God"
+        "God",
+        "programming"
       ],
       "time": "0001-01-01",
-      "length": 1
+      "length": 2
     },
     {
       "filename": "I love decision trees.md",
@@ -169,32 +174,32 @@
         "why-am-not-i-born-to-be-rich.md"
       ]
     },
-    "social": {
+    "review": {
       "color": "#EC4899",
+      "count": 1,
+      "articles": [
+        "selfref.md"
+      ]
+    },
+    "social": {
+      "color": "#06B6D4",
       "count": 1,
       "articles": [
         "I love decision trees.md"
       ]
     },
     "study": {
-      "color": "#06B6D4",
+      "color": "#84CC16",
       "count": 1,
       "articles": [
         "高一上学期期末考试.md"
       ]
     },
     "tutorial": {
-      "color": "#84CC16",
-      "count": 1,
-      "articles": [
-        "markdown-tutor.md"
-      ]
-    },
-    "逻辑": {
       "color": "#F97316",
       "count": 1,
       "articles": [
-        "amisayingthetruth.md"
+        "markdown-tutor.md"
       ]
     }
   },
@@ -290,57 +295,73 @@
         "!template.md"
       ]
     },
-    "learning": {
+    "language": {
       "color": "#22D3EE",
+      "count": 1,
+      "articles": [
+        "selfref.md"
+      ]
+    },
+    "learning": {
+      "color": "#EAB308",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "machine learning": {
-      "color": "#EAB308",
+      "color": "#DC2626",
       "count": 1,
       "articles": [
         "I love decision trees.md"
       ]
     },
     "markdown": {
-      "color": "#DC2626",
+      "color": "#7C3AED",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "math": {
-      "color": "#7C3AED",
-      "count": 1,
+      "color": "#059669",
+      "count": 2,
       "articles": [
-        "intergrade.md"
+        "intergrade.md",
+        "selfref.md"
       ]
     },
     "oi": {
-      "color": "#059669",
+      "color": "#D97706",
       "count": 1,
       "articles": [
         "dp+单调队列.md"
       ]
     },
+    "philosophy": {
+      "color": "#DB2777",
+      "count": 1,
+      "articles": [
+        "selfref.md"
+      ]
+    },
     "physics": {
-      "color": "#D97706",
+      "color": "#3B82F6",
       "count": 1,
       "articles": [
         "TheWorldFunction.md"
       ]
     },
     "programming": {
-      "color": "#DB2777",
-      "count": 1,
+      "color": "#10B981",
+      "count": 2,
       "articles": [
+        "CHANGELOG.md",
         "dp+单调队列.md"
       ]
     },
     "reflection": {
-      "color": "#3B82F6",
+      "color": "#F59E0B",
       "count": 2,
       "articles": [
         "TheWorldFunction.md",
@@ -348,7 +369,7 @@
       ]
     },
     "video": {
-      "color": "#10B981",
+      "color": "#EF4444",
       "count": 1,
       "articles": [
         "bili.md"

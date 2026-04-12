@@ -1,6 +1,6 @@
 <template>
   <BApp>
-    <WallpaperBackground />
+    <WallpaperDark />
 
     <BNavbar id="nav" class="shadow mb-3">
       <BNavbarBrand href="//chunl.ai">Blog2</BNavbarBrand>
@@ -43,9 +43,9 @@
 import { BContainer } from "bootstrap-vue-next";
 import ThemeToggle from "./ThemeToggle.vue";
 import { RouterView } from "vue-router";
-import WallpaperBackground from "./WallpaperBackground.vue";
 import RouteURLNav from "./RouteURLNav.vue";
 import Giscus from "@giscus/vue"
+import WallpaperDark from "./WallpaperDark.vue";
 
 </script>
 <style lang="scss">

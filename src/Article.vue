@@ -1,10 +1,11 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div id="md" class="heti"  v-html="text"></div>
+  <div id="md" class="heti" v-html="text"></div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import mermaid from "mermaid";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 const text = ref("Markdown");
 const route = useRoute();
@@ -29,4 +30,9 @@ const reload = async () => {
 };
 
 await reload();
+
+onMounted(() => {
+  mermaid.run({ querySelector: ".language-mermaid" })
+
+})
 </script>
