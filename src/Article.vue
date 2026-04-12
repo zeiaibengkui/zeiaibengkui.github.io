@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 const text = ref("Markdown");
 const route = useRoute();
@@ -29,4 +29,31 @@ const reload = async () => {
 };
 
 await reload();
+
+onMounted(() => {
+  document.querySelectorAll('a').forEach((el) => {
+    if (el.href.match(/^#\/|(!^#)/)) return;
+    el.addEventListener("click", (ev) => {
+      ev.preventDefault();
+      const href = decodeURI(el.href.match(/\#.*$/)![0]);
+      console.log(href);
+      document.querySelector(href)?.scrollIntoView({ behavior: "auto" })
+    })
+  })
+})
 </script>
+
+<style lang="scss">
+nav.toc {
+  padding: .5rem 2rem;
+  border-left: solid gray;
+
+  &::before {
+    content: "Table of Contents";
+  }
+
+  .toc-level-1 {
+    list-style: cjk-decimal;
+  }
+}
+</style>

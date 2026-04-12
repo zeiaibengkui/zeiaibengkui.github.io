@@ -13,6 +13,7 @@ import remarkRehype from 'remark-rehype'
 import { unified } from 'unified'
 import rehypeStarryNight from 'rehype-starry-night'
 import rehypeMermaid from 'rehype-mermaid'
+import toc from '@jsdevtools/rehype-toc'
 /**
  * Normalize LaTeX math delimiters:
  * - \[ \] → $$ (display math)
@@ -81,6 +82,7 @@ function removeFrontmatter(content: string): string {
   return cleanLines.join('\n')
 }
 
+import rehypeSlug from 'rehype-slug'
 // Create unified processor for markdown -> HTML
 const processor = unified()
   .use(remarkParse)
@@ -95,6 +97,8 @@ const processor = unified()
   .use(rehypeStarryNight)
   .use(rehypeMermaid, { strategy: "inline-svg" })
   .use(rehypeStringify)
+  .use(rehypeSlug)
+  .use(toc, { headings: ['h1', 'h2'] })
 
 async function precompileMarkdown() {
   const articlesDir = path.join(process.cwd(), 'public/articles')
