@@ -7,8 +7,15 @@
 
 ## 第二天
 
-李春来说：我要使用markdown！  
-于是`mkdir public/articles -p`
+李春来说：我要使用markdown！还要有Metadata！  
+于是
+cato: funny  
+labels:
+
+- God
+- programming
+
+time: 0001-01-01
 
 ## 第三天
 
@@ -41,4 +48,4 @@ import "rehype-highlight"
 ## 第七天
 
 李春来看了看他的博客，非常满意  
-结果他发现有一个项目: VitePress
+结果他发现有一个项目: [VitePress](https://github.com/vuejs/vitepress)
