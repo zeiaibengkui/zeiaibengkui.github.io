@@ -15,7 +15,7 @@
             <template v-if="Component">
               <Suspense>
                 <template #default>
-                  <Transition mode="out-in" name="bounce" :key="route.fullPath">
+                  <Transition mode="out-in" :duration="1300" name="bounce" :key="route.fullPath">
                     <component :is="Component"></component>
                   </Transition>
                 </template>

@@ -5,7 +5,10 @@
 }
 
 .bounce-leave-active {
-    animation: bounce-out 0.3s ease-out ;
+    animation: bounce-out 0.3s ease-out;
+    opacity: 0;
+    max-height: 0;
+
 }
 
 @keyframes bounce-in {

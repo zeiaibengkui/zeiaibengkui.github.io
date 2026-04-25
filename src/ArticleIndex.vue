@@ -1,17 +1,42 @@
 <script lang="ts" setup>
+import { computed, ref } from 'vue';
 import CatoLabel from './components/CatoLabel.vue'
 import { useArticleStore } from './stores/article';
+import { computedAsync } from '@vueuse/core';
+
 const props = defineProps<{ num?: number }>()
 
 const { articles, catoIndex, labelIndex } = useArticleStore()
+
+const search = ref("")
+
+const processedArticles = computedAsync(() => (articles.filter((article) => {
+  if (!search.value) return true
+  let result = true
+  try {
+    result = !!JSON.stringify(article).match(search.value)
+  } catch (_e: unknown) {
+    console.log("Regexp err:", _e);
+    result = JSON.stringify(article).includes(search.value)
+  }
+  return result
+})))
 </script>
 
 <template>
-  <ul class="list-unstyled">
-    <template v-for="(article, index) in articles" :key="article.filename">
-      <li v-if="!props.num || index < props.num">
+  <ul class="list-unstyled w-100">
+    <BDropdown text="Search" class="mb-3" :auto-close="false" variant="primary" v-if="!props.num">
+      <BDropdownForm>
+        <BFormGroup label="fuzzy search">
+          <BInput v-model="search" v-if="!props.num" placeholder="Regexp" />
+        </BFormGroup>
+      </BDropdownForm>
+    </BDropdown>
+    <!-- <TransitionGroup name="bounce"> -->
+    <template v-for="(article, index) in processedArticles" :key="article.filename">
+      <li v-if="!props.num || index < props.num" class="bg-transparent">
         <RouterLink :to="`/articles/${article.filename}`">
-        <BCard no-body class="mb-3" :style="{maxWidth: '540px',width:props.num?'max-content':'100%'}">
+          <BCard no-body class="mb-3" :style="{ maxWidth: '540px', width: props.num ? 'max-content' : '100%' }">
             <BCardBody :title="article.title">
               <BCardText>
                 <div class="labels mb-1">
@@ -28,7 +53,8 @@ const { articles, catoIndex, labelIndex } = useArticleStore()
         </RouterLink>
       </li>
     </template>
-    <li v-if="num">
+    <!-- </TransitionGroup> -->
+    <li v-if="num" class="bg-transparent">
       <RouterLink to="/articles">
         <BCard style="width: max-content;">
           <h3 class="d-flex align-items-center justify-content-center h-100">Explore More -></h3>
