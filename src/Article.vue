@@ -53,8 +53,9 @@ await reload();
 
 onMounted(() => {
   document.querySelectorAll('a').forEach((el) => {
-    if (el.href.startsWith("#/")) return;
-    if (!el.href.startsWith("#")) return
+    if (el.href.includes("#/")) return;
+    if (!el.href.includes("#")) return
+    console.log(el);
     el.addEventListener("click", (ev) => {
       ev.preventDefault();
       const href = decodeURI(el.href.match(/\#.*$/)![0]);

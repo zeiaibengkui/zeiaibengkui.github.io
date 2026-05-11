@@ -8,7 +8,7 @@ const props = defineProps<{ num?: number }>()
 
 const { articles, catoIndex, labelIndex } = useArticleStore()
 
-const search = ref("")
+const search = ref("^(Regular Expression|.*)$")
 
 const processedArticles = computedAsync(() => (articles.filter((article) => {
   if (!search.value) return true
