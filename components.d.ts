@@ -14,6 +14,7 @@ declare module 'vue' {
     BApp: typeof import('bootstrap-vue-next/components/BApp')['BApp']
     BBreadcrumb: typeof import('bootstrap-vue-next/components/BBreadcrumb')['BBreadcrumb']
     BBreadcrumbItem: typeof import('bootstrap-vue-next/components/BBreadcrumb')['BBreadcrumbItem']
+    BButtonGroup: typeof import('bootstrap-vue-next/components/BButton')['BButtonGroup']
     BCard: typeof import('bootstrap-vue-next/components/BCard')['BCard']
     BCardBody: typeof import('bootstrap-vue-next/components/BCard')['BCardBody']
     BCardText: typeof import('bootstrap-vue-next/components/BCard')['BCardText']
@@ -30,5 +31,6 @@ declare module 'vue' {
     CatoLabel: typeof import('./src/components/CatoLabel.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ShareTest: typeof import('./src/components/ShareTest.vue')['default']
   }
 }
