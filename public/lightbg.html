@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<title>Harmony - 从混沌到有序</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background: black;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				font-family: KaiTi, "Times New Roman", Times, serif;
+			}
+			canvas {
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			h1 {
+				z-index: 2;
+				text-shadow: black 0 0 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="hexCanvas"></canvas>
+		<h1>Harmony - 从混沌到有序</h1>
+
+		<script>
+			(function () {
+				// ======================= 全局配置常量（全部集中定义，便于修改） =======================
+				// 数量与几何
+				const SHAPE_COUNT = 200; // 六边形数量
+				const MIN_RADIUS = 20; // 最小外接圆半径 (px)
+				const MAX_RADIUS = 48; // 最大外接圆半径 (px)
+
+				// 运动参数（中心引力，无硬性边界约束）
+				const GRAVITY_STRENGTH = 20; // 引力强度系数 (指向画布中心) GM=gR^2
+				const VELOCITY_DAMP = 0.999; // 每帧速度阻尼，保持漂浮稳定
+				const MAX_SPEED = 50; // 速度上限（防止引力过冲）
+				const MIN_SPEED = -1; // 初始速度最小值（仅初始化用）
+				const INIT_SPEED_RATIO = 0.000001; // 初始速度相对于 MAX_SPEED 的上限比例
+				CENTER_DIST = 100; //how much the black hole is
+
+				// 视觉样式
+				const MIN_STROKE_WIDTH = 1.2; // 最小描边宽度 (px)
+				const MAX_STROKE_WIDTH = 12; // 最大描边宽度 (px) — 随机范围
+				const BACKGROUND_COLOR = "#000000"; // 画布背景纯黑
+
+				// 双色方案（边框与填充色互为对方）
+				const TYPE1_BORDER = "#000000";
+				const TYPE1_FILL = "#ffffff";
+				const TYPE2_BORDER = TYPE1_FILL; // 白色边框
+				const TYPE2_FILL = TYPE1_BORDER; // 黑色填充
+
+				// 行为开关
+				const GRADUAL_ENTRY = true; // true: 六边形初始位于画布外部，逐渐飘入视野
+
+				// 颜色映射对象
+				const COLOR_MAP = {
+					1: { border: TYPE1_BORDER, fill: TYPE1_FILL },
+					2: { border: TYPE2_BORDER, fill: TYPE2_FILL },
+				};
+
+				// --------------------- 定义 Hexagon 类 ---------------------
+				class Hexagon {
+					constructor(x, y, r, vx, vy, type, strokeWidth) {
+						this.x = x; // 中心 x 坐标
+						this.y = y; // 中心 y 坐标
+						this.r = r; // 外接圆半径
+						this.vx = vx; // 速度 x 分量
+						this.vy = vy; // 速度 y 分量
+						this.type = type; // 1 或 2，决定颜色组合
+						this.strokeWidth = strokeWidth; // 随机线宽
+						this.ax = 0;
+						this.ay = 0;
+					}
+
+					// 物理更新：中心引力 + 速度阻尼 (无边界钳位/回环)
+					update(centerX, centerY) {
+						// 1. 计算指向引力中心的加速度 (线性力，距离越大引力越强)
+						let dx = centerX - this.x;
+						let dy = centerY - this.y;
+						let dist = Math.hypot(dx, dy);
+						if (dist > CENTER_DIST) {
+							let forceMagnitude = GRAVITY_STRENGTH / dist;
+							this.ax = (dx / dist) * forceMagnitude;
+							this.ay = (dy / dist) * forceMagnitude;
+							this.vx += this.ax;
+							this.vy += this.ay;
+						} else {
+							// re init
+							const posRadio = 1;
+							/*this.x = randomRange(
+								-centerX * posRadio + centerX,
+								centerX * posRadio + centerX
+							);
+							this.y = randomRange(
+								-centerY * posRadio + centerY,
+								centerY * posRadio + centerY
+							);*/
+							this.x = -this.r;
+							this.y = currentHeight / 2;
+							const speedRadio = 0.006;
+							this.vx = (this.y - centerY) * speedRadio;
+							this.vy = (this.x - centerX) * -speedRadio;
+							console.log(this);
+						}
+
+						// 2. 速度阻尼（保持运动稳定）
+						this.vx *= VELOCITY_DAMP;
+						this.vy *= VELOCITY_DAMP;
+
+						// 3. 速度限幅（避免偶然过大）
+						this.vx = Math.min(
+							MAX_SPEED,
+							Math.max(-MAX_SPEED, this.vx)
+						);
+						this.vy = Math.min(
+							MAX_SPEED,
+							Math.max(-MAX_SPEED, this.vy)
+						);
+
+						// 4. 欧拉积分更新位置
+						this.x += this.vx;
+						this.y += this.vy;
+
+						// 注意：完全不进行任何边界钳位或回环，物体可以自然飘出画布，
+						// 但中心引力会逐渐将其拉回可视区域。
+					}
+
+					// 绘制六边形（空心填充 + 描边，六边形自身不旋转）
+					draw(ctx) {
+						if (this.r <= 0) return;
+						const colors = COLOR_MAP[this.type];
+
+						ctx.beginPath();
+						for (let i = 0; i < 6; i++) {
+							// 六边形的一个尖角朝上 (-PI/2)，且固定朝向，不随运动旋转
+							const angle = (i * Math.PI * 2) / 6 - Math.PI / 2;
+							const px = this.x + this.r * Math.cos(angle);
+							const py = this.y + this.r * Math.sin(angle);
+							if (i === 0) ctx.moveTo(px, py);
+							else ctx.lineTo(px, py);
+						}
+						ctx.closePath();
+
+						// 填充内部
+						ctx.fillStyle = colors.fill;
+						ctx.fill();
+						// 描边
+						ctx.strokeStyle = colors.border;
+						ctx.lineWidth = this.strokeWidth;
+						ctx.stroke();
+						//this.drawVelocityArrow(ctx);
+					}
+					// arrow to debug
+					drawVelocityArrow(ctx) {
+						const scale = 15; // 速度放大系数，可调整（px per unit velocity）
+						const arrowSize = 6; // 箭头头部大小（px）
+
+						const vx = this.vx;
+						const vy = this.vy;
+						const speed = Math.hypot(vx, vy);
+						if (speed < 0.02) return; // 速度太小不画
+
+						// 箭头终点（从中心出发）
+						const endX = this.x + vx * scale;
+						const endY = this.y + vy * scale;
+
+						ctx.save();
+						ctx.beginPath();
+						ctx.moveTo(this.x, this.y);
+						ctx.lineTo(endX, endY);
+						ctx.strokeStyle = "#ff6666";
+						ctx.lineWidth = 2;
+						ctx.stroke();
+
+						// 绘制箭头头部（三角形）
+						const angle = Math.atan2(vy, vx);
+						const ang1 = angle + Math.PI * 0.8; // 约 144度
+						const ang2 = angle - Math.PI * 0.8;
+						const headX = endX;
+						const headY = endY;
+						const wingX1 = headX - arrowSize * Math.cos(ang1);
+						const wingY1 = headY - arrowSize * Math.sin(ang1);
+						const wingX2 = headX - arrowSize * Math.cos(ang2);
+						const wingY2 = headY - arrowSize * Math.sin(ang2);
+
+						ctx.beginPath();
+						ctx.moveTo(headX, headY);
+						ctx.lineTo(wingX1, wingY1);
+						ctx.lineTo(wingX2, wingY2);
+						ctx.fillStyle = "#ff6666";
+						ctx.fill();
+						ctx.restore();
+					}
+				}
+
+				// --------------------- 辅助函数（随机生成参数） ---------------------
+				function randomRange(min, max) {
+					return min + Math.random() * (max - min);
+				}
+
+				// 生成随机初始速度（保证不静止，且速度方向随机）
+				function randomInitialVelocity() {
+					let vx = randomRange(
+						-MAX_SPEED * INIT_SPEED_RATIO,
+						MAX_SPEED * INIT_SPEED_RATIO
+					);
+					let vy = randomRange(
+						-MAX_SPEED * INIT_SPEED_RATIO,
+						MAX_SPEED * INIT_SPEED_RATIO
+					);
+					while (
+						Math.abs(vx) < MIN_SPEED &&
+						Math.abs(vy) < MIN_SPEED
+					) {
+						vx = randomRange(
+							-MAX_SPEED * INIT_SPEED_RATIO,
+							MAX_SPEED * INIT_SPEED_RATIO
+						);
+						vy = randomRange(
+							-MAX_SPEED * INIT_SPEED_RATIO,
+							MAX_SPEED * INIT_SPEED_RATIO
+						);
+					}
+					return { vx, vy };
+				}
+
+				function randomRadius() {
+					return randomRange(MIN_RADIUS, MAX_RADIUS);
+				}
+
+				function randomStrokeWidth() {
+					return randomRange(MIN_STROKE_WIDTH, MAX_STROKE_WIDTH);
+				}
+
+				function randomType() {
+					return Math.random() < 0.5 ? 1 : 2;
+				}
+
+				// 创建一个新的 Hexagon 实例（根据 GRADUAL_ENTRY 决定初始位置）
+				function createHexagon(width, height) {
+					const r = randomRadius();
+					const type = randomType();
+					const strokeWidth = randomStrokeWidth();
+					let x, y, vx, vy;
+
+					if (GRADUAL_ENTRY) {
+						// 从画布外部开始，速度方向大致指向内部，便于逐渐飘入
+						const edge = Math.floor(Math.random() * 4); // 0左,1右,2上,3下
+						let baseVx = 0,
+							baseVy = 0;
+
+						switch (edge) {
+							case 0: // 左侧外
+								x = randomRange(-r * 1.5, -r * 0.2);
+								y = randomRange(0, height);
+								baseVx = 1;
+								break;
+							case 1: // 右侧外
+								x = randomRange(
+									width + r * 0.2,
+									width + r * 1.5
+								);
+								y = randomRange(0, height);
+								baseVx = -1;
+								break;
+							case 2: // 上侧外
+								x = randomRange(0, width);
+								y = randomRange(-r * 1.5, -r * 0.2);
+								baseVy = 1;
+								break;
+							default: // 下侧外
+								x = randomRange(0, width);
+								y = randomRange(
+									height + r * 0.2,
+									height + r * 1.5
+								);
+								baseVy = -1;
+								break;
+						}
+
+						// 生成指向内部的初速度，同时附带横向/纵向随机分量
+						let rawVx = randomRange(0.7, MAX_SPEED * 0.9);
+						let rawVy = randomRange(0.6, MAX_SPEED * 0.9);
+						if (baseVx !== 0) {
+							vx = baseVx * rawVx;
+							vy = randomRange(-MAX_SPEED * 0.6, MAX_SPEED * 0.6);
+						} else {
+							vx = randomRange(-MAX_SPEED * 0.6, MAX_SPEED * 0.6);
+							vy = baseVy * rawVy;
+						}
+
+						// 确保速度绝对值不低于最小值
+						if (Math.abs(vx) < MIN_SPEED)
+							vx = vx > 0 ? MIN_SPEED : -MIN_SPEED;
+						if (Math.abs(vy) < MIN_SPEED)
+							vy = vy > 0 ? MIN_SPEED : -MIN_SPEED;
+						vx = Math.min(MAX_SPEED, Math.max(-MAX_SPEED, vx));
+						vy = Math.min(MAX_SPEED, Math.max(-MAX_SPEED, vy));
+					} else {
+						// 内部初始位置（完全在画布内）
+						x = width / 2;
+						y = height / 2;
+						const vel = randomInitialVelocity();
+						vx = vel.vx;
+						vy = vel.vy;
+					}
+
+					return new Hexagon(x, y, r, vx, vy, type, strokeWidth);
+				}
+
+				// --------------------- 全局变量 ---------------------
+				const canvas = document.getElementById("hexCanvas");
+				let ctx = canvas.getContext("2d");
+				let hexagons = []; // 存储 Hexagon 实例数组
+				let currentWidth = 0,
+					currentHeight = 0;
+				let centerX = 0,
+					centerY = 0;
+				let animationId = null;
+
+				// 初始化所有六边形实例
+				function initHexagons(width, height) {
+					const arr = [];
+					for (let i = 0; i < SHAPE_COUNT; i++) {
+						arr.push(createHexagon(width, height));
+					}
+					return arr;
+				}
+
+				// 更新所有六边形物理状态
+				function updateAllHexagons() {
+					// 实时获取当前画布中心（因为窗口大小可能被resize改变）
+					centerX = currentWidth / 2;
+					centerY = currentHeight / 2;
+					for (let hex of hexagons) {
+						hex.update(centerX, centerY);
+					}
+				}
+
+				// 绘制所有六边形
+				function drawAllHexagons() {
+					for (let hex of hexagons) {
+						hex.draw(ctx);
+					}
+				}
+
+				function drawBackground() {
+					ctx.fillStyle = BACKGROUND_COLOR;
+					ctx.fillRect(0, 0, currentWidth, currentHeight);
+				}
+
+				function render() {
+					if (!ctx) return;
+					drawBackground();
+					drawAllHexagons();
+				}
+
+				// 动画循环
+				function animate() {
+					if (!ctx) return;
+					updateAllHexagons();
+					render();
+					animationId = requestAnimationFrame(animate);
+				}
+
+				// 尺寸自适应：重置整个场景（窗口改变时重新生成所有六边形，以适应新的边界）
+				function resizeAndReset() {
+					const newWidth = window.innerWidth;
+					const newHeight = window.innerHeight;
+					if (newWidth === 0 || newHeight === 0) return;
+
+					canvas.width = newWidth;
+					canvas.height = newHeight;
+					currentWidth = newWidth;
+					currentHeight = newHeight;
+					ctx = canvas.getContext("2d");
+
+					// 重新生成六边形实例（每个实例都会获得新的随机属性）
+					hexagons = initHexagons(currentWidth, currentHeight);
+
+					if (ctx) {
+						drawBackground();
+						drawAllHexagons();
+					}
+				}
+
+				// 防抖 resize
+				let resizeTimer = null;
+				function handleResize() {
+					if (resizeTimer) clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(() => {
+						resizeAndReset();
+						resizeTimer = null;
+					}, 80);
+				}
+
+				// 页面可见性管理
+				function onVisibilityChange() {
+					if (document.hidden) {
+						if (animationId) {
+							cancelAnimationFrame(animationId);
+							animationId = null;
+						}
+					} else {
+						if (!animationId && ctx) {
+							animationId = requestAnimationFrame(animate);
+						}
+					}
+				}
+
+				// 初始化整个应用
+				function init() {
+					resizeAndReset();
+					animationId = requestAnimationFrame(animate);
+					window.addEventListener("resize", handleResize);
+					document.addEventListener(
+						"visibilitychange",
+						onVisibilityChange
+					);
+				}
+
+				window.addEventListener("beforeunload", () => {
+					if (animationId) cancelAnimationFrame(animationId);
+					window.removeEventListener("resize", handleResize);
+					document.removeEventListener(
+						"visibilitychange",
+						onVisibilityChange
+					);
+				});
+
+				init();
+
+				// 控制台输出配置信息
+				console.log(
+					`[Hexagon Class] 中心引力漂浮 | 数量:${SHAPE_COUNT} | 半径:${MIN_RADIUS}~${MAX_RADIUS} | ` +
+						`线宽随机:${MIN_STROKE_WIDTH}~${MAX_STROKE_WIDTH} | 引力强度:${GRAVITY_STRENGTH} | 阻尼:${VELOCITY_DAMP} | ` +
+						`逐渐进入:${GRADUAL_ENTRY} | 无硬性边界约束 | 六边形不旋转`
+				);
+			})();
+		</script>
+	</body>
+</html>

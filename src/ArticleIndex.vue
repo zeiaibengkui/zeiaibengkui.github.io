@@ -24,14 +24,11 @@ const processedArticles = computedAsync(() => (articles.filter((article) => {
 </script>
 
 <template>
-  <ul class="list-unstyled w-100">
-    <BDropdown text="Search" class="mb-3" :auto-close="false" variant="primary" v-if="!props.num">
-      <BDropdownForm>
-        <BFormGroup label="fuzzy search">
-          <BInput v-model="search" v-if="!props.num" placeholder="Regexp" />
-        </BFormGroup>
-      </BDropdownForm>
-    </BDropdown>
+  <ul class="list-unstyled">
+    <BInputGroup class="bg-transparent border-0 border mb-3" v-if="!props.num">
+      <BInputGroupText>Search</BInputGroupText>
+      <BInput v-model="search" v-if="!props.num" placeholder="Regexp" />
+    </BInputGroup>
     <!-- <TransitionGroup name="bounce"> -->
     <template v-for="(article, index) in processedArticles" :key="article.filename">
       <li v-if="!props.num || index < props.num" class="bg-transparent">

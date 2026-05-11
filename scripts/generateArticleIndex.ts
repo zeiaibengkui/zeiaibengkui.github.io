@@ -130,7 +130,7 @@ function generateColor(index: number): string {
 function generateIndex() {
   const articlesDir = path.join(process.cwd(), 'public/articles')
   const files = fs.readdirSync(articlesDir)
-    .filter(file => file.endsWith('.md') && file !== 'template.md')
+    .filter(file => file.endsWith('.md') && file !== '!template.md')
     .sort()
 
   const articles: Article[] = []

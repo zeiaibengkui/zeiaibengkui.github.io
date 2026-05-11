@@ -1,6 +1,28 @@
 {
   "articles": [
     {
+      "filename": "!template.md",
+      "title": "Article Title",
+      "brief": "Your article content starts here. The first paragraph after the metadata will be used as the brief description in the index.",
+      "cato": "category-name",
+      "labels": [
+        "label1",
+        "label2",
+        "label3"
+      ],
+      "time": "2024-01-15",
+      "length": 1
+    },
+    {
+      "filename": "2026年4月24日.md",
+      "title": "OI 笔记",
+      "brief": "lablels:",
+      "cato": "learn",
+      "labels": [],
+      "time": "2026年4月24日",
+      "length": 5
+    },
+    {
       "filename": "dp+单调队列.md",
       "title": "单调队列",
       "brief": "用途：求a[]中每个区间长度为k中的极值",
@@ -39,32 +61,6 @@
       "length": 1
     },
     {
-      "filename": "TheWorldFunction.md",
-      "title": "追寻世界函数：从不动点到热寂的诗意漫游",
-      "brief": "当你开始认真思考这个问题，你就踏上了一场奇异的旅程——从决定论的坚实土地出发，穿过量子不确定性的迷雾，最终抵达宇宙终结处的哲学悬崖。",
-      "cato": "philosophy",
-      "labels": [
-        "physics",
-        "cosmology",
-        "reflection"
-      ],
-      "time": "2024-01-20",
-      "length": 7
-    },
-    {
-      "filename": "!template.md",
-      "title": "Article Title",
-      "brief": "Your article content starts here. The first paragraph after the metadata will be used as the brief description in the index.",
-      "cato": "category-name",
-      "labels": [
-        "label1",
-        "label2",
-        "label3"
-      ],
-      "time": "2024-01-15",
-      "length": 1
-    },
-    {
       "filename": "why-am-not-i-born-to-be-rich.md",
       "title": "记",
       "brief": "\"妈，你说咱家穷不穷？\"",
@@ -87,7 +83,7 @@
         "guide"
       ],
       "time": "2024-01-12",
-      "length": 3
+      "length": 2
     },
     {
       "filename": "bili.md",
@@ -153,8 +149,9 @@
     },
     "learn": {
       "color": "#F59E0B",
-      "count": 2,
+      "count": 3,
       "articles": [
+        "2026年4月24日.md",
         "dp+单调队列.md",
         "intergrade.md"
       ]
@@ -168,9 +165,8 @@
     },
     "philosophy": {
       "color": "#8B5CF6",
-      "count": 2,
+      "count": 1,
       "articles": [
-        "TheWorldFunction.md",
         "why-am-not-i-born-to-be-rich.md"
       ]
     },
@@ -218,113 +214,106 @@
         "bili.md"
       ]
     },
-    "cosmology": {
-      "color": "#F59E0B",
-      "count": 1,
-      "articles": [
-        "TheWorldFunction.md"
-      ]
-    },
     "dialogue": {
-      "color": "#EF4444",
+      "color": "#F59E0B",
       "count": 1,
       "articles": [
         "why-am-not-i-born-to-be-rich.md"
       ]
     },
     "emo": {
-      "color": "#8B5CF6",
+      "color": "#EF4444",
       "count": 1,
       "articles": [
         "高一上学期期末考试.md"
       ]
     },
     "encourage": {
-      "color": "#EC4899",
+      "color": "#8B5CF6",
       "count": 1,
       "articles": [
         "高一上学期期末考试.md"
       ]
     },
     "funny": {
-      "color": "#06B6D4",
+      "color": "#EC4899",
       "count": 1,
       "articles": [
         "I love decision trees.md"
       ]
     },
     "God": {
-      "color": "#84CC16",
+      "color": "#06B6D4",
       "count": 1,
       "articles": [
         "CHANGELOG.md"
       ]
     },
     "guide": {
-      "color": "#F97316",
+      "color": "#84CC16",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "Intergrade": {
-      "color": "#6366F1",
+      "color": "#F97316",
       "count": 1,
       "articles": [
         "intergrade.md"
       ]
     },
     "label1": {
-      "color": "#14B8A6",
+      "color": "#6366F1",
       "count": 1,
       "articles": [
         "!template.md"
       ]
     },
     "label2": {
-      "color": "#A855F7",
+      "color": "#14B8A6",
       "count": 1,
       "articles": [
         "!template.md"
       ]
     },
     "label3": {
-      "color": "#F43F5E",
+      "color": "#A855F7",
       "count": 1,
       "articles": [
         "!template.md"
       ]
     },
     "language": {
-      "color": "#22D3EE",
+      "color": "#F43F5E",
       "count": 1,
       "articles": [
         "selfref.md"
       ]
     },
     "learning": {
-      "color": "#EAB308",
+      "color": "#22D3EE",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "machine learning": {
-      "color": "#DC2626",
+      "color": "#EAB308",
       "count": 1,
       "articles": [
         "I love decision trees.md"
       ]
     },
     "markdown": {
-      "color": "#7C3AED",
+      "color": "#DC2626",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "math": {
-      "color": "#059669",
+      "color": "#7C3AED",
       "count": 2,
       "articles": [
         "intergrade.md",
@@ -332,28 +321,21 @@
       ]
     },
     "oi": {
-      "color": "#D97706",
+      "color": "#059669",
       "count": 1,
       "articles": [
         "dp+单调队列.md"
       ]
     },
     "philosophy": {
-      "color": "#DB2777",
+      "color": "#D97706",
       "count": 1,
       "articles": [
         "selfref.md"
       ]
     },
-    "physics": {
-      "color": "#3B82F6",
-      "count": 1,
-      "articles": [
-        "TheWorldFunction.md"
-      ]
-    },
     "programming": {
-      "color": "#10B981",
+      "color": "#DB2777",
       "count": 2,
       "articles": [
         "CHANGELOG.md",
@@ -361,15 +343,14 @@
       ]
     },
     "reflection": {
-      "color": "#F59E0B",
-      "count": 2,
+      "color": "#3B82F6",
+      "count": 1,
       "articles": [
-        "TheWorldFunction.md",
         "why-am-not-i-born-to-be-rich.md"
       ]
     },
     "video": {
-      "color": "#EF4444",
+      "color": "#10B981",
       "count": 1,
       "articles": [
         "bili.md"

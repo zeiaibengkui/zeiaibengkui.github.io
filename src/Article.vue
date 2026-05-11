@@ -32,7 +32,8 @@ await reload();
 
 onMounted(() => {
   document.querySelectorAll('a').forEach((el) => {
-    if (el.href.match(/^#\/|(!^#)/)) return;
+    if (el.href.startsWith("#/")) return;
+    if (!el.href.startsWith("#")) return
     el.addEventListener("click", (ev) => {
       ev.preventDefault();
       const href = decodeURI(el.href.match(/\#.*$/)![0]);
@@ -52,8 +53,8 @@ nav.toc {
     content: "Table of Contents";
   }
 
-  .toc-level-1 {
-    list-style: cjk-decimal;
+  .toc-level {
+    list-style: none;
   }
 }
 </style>
