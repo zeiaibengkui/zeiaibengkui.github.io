@@ -1,6 +1,6 @@
 <template>
   <BApp>
-    <WallpaperDark />
+    <WallpaperDark v-show="!theme.isLight" />
 
     <BNavbar id="nav" class="shadow mb-3">
       <BNavbarBrand href="//chunl.ai">Blog2</BNavbarBrand>
@@ -31,7 +31,7 @@
       <BContainer>
         <Giscus :key="$route.fullPath" repo="zeiaibengkui/zeiaibengkui.github.io" repo-id="R_kgDOQ8BJxQ"
           category="General" category-id="DIC_kwDOQ8BJxc4C3LNU" mapping="title" strict="0" reactions-enabled="1"
-          emit-metadata="0" input-position="top" theme="" lang="en">
+          emit-metadata="0" input-position="top" :theme="theme.themeStr" lang="en">
         </Giscus>
       </BContainer>
     </main>
@@ -46,7 +46,10 @@ import { RouterView } from "vue-router";
 import RouteURLNav from "./RouteURLNav.vue";
 import Giscus from "@giscus/vue"
 import WallpaperDark from "./WallpaperDark.vue";
+import { useThemeStore } from "./stores/colorTheme";
 
+
+const theme = useThemeStore()
 </script>
 <style lang="scss">
 #app {
