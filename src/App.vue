@@ -1,7 +1,7 @@
 <template>
   <BApp>
-    <WallpaperDark v-show="!theme.isLight" />
-    <WallpaperLight v-show="theme.isLight" />
+    <WallpaperDark v-if="!theme.isLight" />
+    <WallpaperLight v-else />
 
     <BNavbar id="nav" class="shadow mb-3">
       <BNavbarBrand href="//chunl.ai">Blog2</BNavbarBrand>
