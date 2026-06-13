@@ -12,7 +12,7 @@ const time = ref(0)
 setInterval(() => {
     time.value += 0.02
 }, 33 /*30fps*/)
-const k = computed(() => a.y.value / 100 + (time.value))
+const k = computed(() => a.y.value / 100 + (time.value % 100))
 const store: any = new Object()
 function zetaCriticalLine(t: number, maxIter = 2000) {
     maxIter *= (1 - Math.log1p(Math.abs(t) * 0.001))
