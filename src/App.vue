@@ -1,6 +1,7 @@
 <template>
   <BApp>
     <WallpaperDark v-show="!theme.isLight" />
+    <WallpaperLight v-show="theme.isLight" />
 
     <BNavbar id="nav" class="shadow mb-3">
       <BNavbarBrand href="//chunl.ai">Blog2</BNavbarBrand>
@@ -47,6 +48,7 @@ import RouteURLNav from "./RouteURLNav.vue";
 import Giscus from "@giscus/vue"
 import WallpaperDark from "./WallpaperDark.vue";
 import { useThemeStore } from "./stores/colorTheme";
+import WallpaperLight from "./WallpaperLight.vue";
 
 
 const theme = useThemeStore()

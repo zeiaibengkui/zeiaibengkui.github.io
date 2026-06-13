@@ -27,6 +27,7 @@
 		"bootstrap-vue-next": "^0.42.0",
 		"heti": "^0.9.6",
 		"jquery.ripples": "^0.6.3",
+		"mafs-vue": "^0.16.2",
 		"pinia": "^3.0.4",
 		"pinia-plugin-persistedstate": "^4.7.1",
 		"vue": "^3.5.32",
