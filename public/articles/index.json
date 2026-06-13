@@ -1,25 +1,26 @@
 {
   "articles": [
     {
-      "filename": "!template.md",
-      "title": "Article Title",
-      "brief": "Your article content starts here. The first paragraph after the metadata will be used as the brief description in the index.",
-      "cato": "category-name",
+      "filename": "general_information_storage_means.md",
+      "title": "信息储存方式总结",
+      "brief": "1. 扫描/拍照",
+      "cato": "IT",
       "labels": [
-        "label1",
-        "label2",
-        "label3"
+        "persist"
       ],
-      "time": "2024-01-15",
+      "time": "2026.6.13",
       "length": 1
     },
     {
       "filename": "2026年4月24日.md",
       "title": "OI 笔记",
-      "brief": "lablels:",
+      "brief": "二项式反演的推导核心在于利用**组合恒等式**和**交换求和顺序**。最关键的数学工具是以下这个正交性恒等式：",
       "cato": "learn",
-      "labels": [],
-      "time": "2026年4月24日",
+      "labels": [
+        "oi",
+        "math"
+      ],
+      "time": "2026.4.24",
       "length": 5
     },
     {
@@ -130,21 +131,29 @@
         "Intergrade"
       ],
       "length": 1
+    },
+    {
+      "filename": "约化质量,资用能.md",
+      "title": "质点系动能定理与约化质量笔记",
+      "brief": "**表达式**",
+      "cato": "uncategorized",
+      "labels": [],
+      "length": 3
     }
   ],
   "categories": {
-    "category-name": {
+    "funny": {
       "color": "#3B82F6",
       "count": 1,
       "articles": [
-        "!template.md"
+        "CHANGELOG.md"
       ]
     },
-    "funny": {
+    "IT": {
       "color": "#10B981",
       "count": 1,
       "articles": [
-        "CHANGELOG.md"
+        "general_information_storage_means.md"
       ]
     },
     "learn": {
@@ -196,6 +205,13 @@
       "count": 1,
       "articles": [
         "markdown-tutor.md"
+      ]
+    },
+    "uncategorized": {
+      "color": "#6366F1",
+      "count": 1,
+      "articles": [
+        "约化质量,资用能.md"
       ]
     }
   },
@@ -263,79 +279,67 @@
         "intergrade.md"
       ]
     },
-    "label1": {
-      "color": "#6366F1",
-      "count": 1,
-      "articles": [
-        "!template.md"
-      ]
-    },
-    "label2": {
-      "color": "#14B8A6",
-      "count": 1,
-      "articles": [
-        "!template.md"
-      ]
-    },
-    "label3": {
-      "color": "#A855F7",
-      "count": 1,
-      "articles": [
-        "!template.md"
-      ]
-    },
     "language": {
-      "color": "#F43F5E",
+      "color": "#6366F1",
       "count": 1,
       "articles": [
         "selfref.md"
       ]
     },
     "learning": {
-      "color": "#22D3EE",
+      "color": "#14B8A6",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "machine learning": {
-      "color": "#EAB308",
+      "color": "#A855F7",
       "count": 1,
       "articles": [
         "I love decision trees.md"
       ]
     },
     "markdown": {
-      "color": "#DC2626",
+      "color": "#F43F5E",
       "count": 1,
       "articles": [
         "markdown-tutor.md"
       ]
     },
     "math": {
-      "color": "#7C3AED",
-      "count": 2,
+      "color": "#22D3EE",
+      "count": 3,
       "articles": [
+        "2026年4月24日.md",
         "intergrade.md",
         "selfref.md"
       ]
     },
     "oi": {
-      "color": "#059669",
-      "count": 1,
+      "color": "#EAB308",
+      "count": 2,
       "articles": [
+        "2026年4月24日.md",
         "dp+单调队列.md"
       ]
     },
+    "persist": {
+      "color": "#DC2626",
+      "count": 1,
+      "articles": [
+        "general_information_storage_means.md"
+      ]
+    },
     "philosophy": {
-      "color": "#D97706",
+      "color": "#7C3AED",
       "count": 1,
       "articles": [
         "selfref.md"
       ]
     },
     "programming": {
-      "color": "#DB2777",
+      "color": "#059669",
       "count": 2,
       "articles": [
         "CHANGELOG.md",
@@ -343,14 +347,14 @@
       ]
     },
     "reflection": {
-      "color": "#3B82F6",
+      "color": "#D97706",
       "count": 1,
       "articles": [
         "why-am-not-i-born-to-be-rich.md"
       ]
     },
     "video": {
-      "color": "#10B981",
+      "color": "#DB2777",
       "count": 1,
       "articles": [
         "bili.md"

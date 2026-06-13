@@ -15,12 +15,12 @@ export default defineConfig({
       resolvers: [BootstrapVueNextResolver(),],
       dts: true,
     }),
-    visualizer({
-      open: true,        // 打包完成后，自动在浏览器中打开报告
-      filename: "dist/stats.html", // 报告文件名，默认生成在根目录
-      gzipSize: true,    // 统计 Gzip 压缩后的大小
-      brotliSize: true,  // 统计 Brotli 压缩后的大小
-    }),
+    // visualizer({
+    //   open: true,        // 打包完成后，自动在浏览器中打开报告
+    //   filename: "dist/stats.html", // 报告文件名，默认生成在根目录
+    //   gzipSize: true,    // 统计 Gzip 压缩后的大小
+    //   brotliSize: true,  // 统计 Brotli 压缩后的大小
+    // }),
     // importToCDN({
     //   // 指定你的 CDN 供应商，这里以 unpkg 为例，它会自动使用 fastly 网络
     //   prodUrl: 'https://unpkg.com/{name}@{version}/{path}',
