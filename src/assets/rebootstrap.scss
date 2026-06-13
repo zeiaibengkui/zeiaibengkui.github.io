@@ -12,3 +12,5 @@ body[data-bs-theme="light"] {
   scroll-behavior: smooth;
   scrollbar-color: var(--bs-primary) transparent;
 }
+
+@import url(./solarized.scss);

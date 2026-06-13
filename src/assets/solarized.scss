@@ -1,0 +1,212 @@
+/**
+ * Solarized Light Theme for Bootstrap 5
+ * 
+ * Overrides Bootstrap's default CSS variables with the Solarized Light color palette.
+ * Use by adding the class 'theme-solarized-light' to your <body> or a container element.
+ * 
+ * Palette Reference:
+ *   Base3 (background)    #fdf6e3   rgb(253, 246, 227)
+ *   Base2 (light)         #eee8d5   rgb(238, 232, 213)
+ *   Base1 (border)        #93a1a1   rgb(147, 161, 161)
+ *   Base0 (secondary)     #839496   rgb(131, 148, 150)
+ *   Base00 (body text)    #657b83   rgb(101, 123, 131)
+ *   Base01 (dark)         #586e75   rgb(88, 110, 117)
+ *   Blue (primary)        #268bd2   rgb(38, 139, 210)
+ *   Cyan (info)           #2aa198   rgb(42, 161, 152)
+ *   Green (success)       #859900   rgb(133, 153, 0)
+ *   Yellow (warning)      #b58900   rgb(181, 133, 0)
+ *   Orange                #cb4b16   (not used as default but can be extended)
+ *   Red (danger)          #dc322f   rgb(220, 50, 47)
+ *   Magenta               #d33682
+ *   Violet                #6c71c4
+ */
+
+.solarized[data-bs-theme="light"] {
+    /* Core body and text */
+    --bs-body-bg: #fdf6e3;
+    --bs-body-bg-rgb: 253, 246, 227;
+    --bs-body-color: #657b83;
+    --bs-body-color-rgb: 101, 123, 131;
+    --bs-body-font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+
+    /* Typography */
+    --bs-heading-color: #586e75;
+    --bs-link-color: #268bd2;
+    --bs-link-hover-color: #2aa198;
+    --bs-link-decoration: none;
+    --bs-link-hover-decoration: underline;
+
+    /* Border and dividers */
+    --bs-border-color: #93a1a1;
+    --bs-border-color-rgb: 147, 161, 161;
+    --bs-border-width: 1px;
+    --bs-border-radius: 0.375rem;
+    --bs-border-radius-lg: 0.5rem;
+    --bs-border-radius-sm: 0.25rem;
+
+    /* Focus ring */
+    --bs-focus-ring-width: 0.25rem;
+    --bs-focus-ring-opacity: 0.25;
+    --bs-focus-ring-color: rgba(42, 161, 152, 0.25);
+    --bs-focus-ring-blur: 0;
+    --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.025);
+    --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.075);
+    --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+
+    /* Theme colors (Bootstrap main palette) */
+    --bs-primary: #268bd2;
+    --bs-primary-rgb: 38, 139, 210;
+    --bs-primary-text-emphasis: #1a5b8c;
+    --bs-primary-bg-subtle: #e9f3fa;
+    --bs-primary-border-subtle: #b8d6f0;
+
+    --bs-secondary: #839496;
+    --bs-secondary-rgb: 131, 148, 150;
+    --bs-secondary-text-emphasis: #4f5c5d;
+    --bs-secondary-bg-subtle: #e9edee;
+    --bs-secondary-border-subtle: #c1cacb;
+
+    --bs-success: #859900;
+    --bs-success-rgb: 133, 153, 0;
+    --bs-success-text-emphasis: #4f5c00;
+    --bs-success-bg-subtle: #f0f4cc;
+    --bs-success-border-subtle: #d4e080;
+
+    --bs-danger: #dc322f;
+    --bs-danger-rgb: 220, 50, 47;
+    --bs-danger-text-emphasis: #8a1e1c;
+    --bs-danger-bg-subtle: #fce8e7;
+    --bs-danger-border-subtle: #f5b7b5;
+
+    --bs-warning: #b58900;
+    --bs-warning-rgb: 181, 133, 0;
+    --bs-warning-text-emphasis: #6e5000;
+    --bs-warning-bg-subtle: #fdf0cc;
+    --bs-warning-border-subtle: #f3daa3;
+
+    --bs-info: #2aa198;
+    --bs-info-rgb: 42, 161, 152;
+    --bs-info-text-emphasis: #1a605b;
+    --bs-info-bg-subtle: #e9f3f2;
+    --bs-info-border-subtle: #b8dbd7;
+
+    --bs-light: #eee8d5;
+    --bs-light-rgb: 238, 232, 213;
+    --bs-light-text-emphasis: #7a765d;
+    --bs-light-bg-subtle: #fdfcf9;
+    --bs-light-border-subtle: #e2dbcd;
+
+    --bs-dark: #586e75;
+    --bs-dark-rgb: 88, 110, 117;
+    --bs-dark-text-emphasis: #354246;
+    --bs-dark-bg-subtle: #e2e7e8;
+    --bs-dark-border-subtle: #aebbbe;
+
+    /* Component specific overrides */
+    --bs-code-color: #d33682;
+    --bs-mark-bg: #fdf0cc;
+    --bs-body-bg-secondary: #eee8d5;
+    --bs-emphasis-color: #586e75;
+    --bs-emphasis-color-rgb: 88, 110, 117;
+
+    /* Cards, modals, dropdowns */
+    --bs-card-bg: #fdf6e3;
+    --bs-card-border-color: #93a1a1;
+    --bs-card-cap-bg: #eee8d5;
+    --bs-dropdown-bg: #fdf6e3;
+    --bs-dropdown-border-color: #93a1a1;
+    --bs-dropdown-link-color: #657b83;
+    --bs-dropdown-link-hover-bg: #eee8d5;
+    --bs-dropdown-link-hover-color: #586e75;
+    --bs-dropdown-divider-bg: #93a1a1;
+
+    /* Tables */
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(238, 232, 213, 0.5);
+    --bs-table-hover-bg: rgba(147, 161, 161, 0.15);
+    --bs-table-border-color: #93a1a1;
+
+    /* Buttons */
+    --bs-btn-color: #657b83;
+    --bs-btn-border-color: #93a1a1;
+    --bs-btn-hover-bg: #eee8d5;
+    --bs-btn-hover-border-color: #839496;
+    --bs-btn-active-bg: #e2dbcd;
+    --bs-btn-active-border-color: #839496;
+    --bs-btn-disabled-bg: #fdf6e3;
+    --bs-btn-disabled-border-color: #93a1a1;
+
+    /* Forms (input, select, textarea) */
+    --bs-input-bg: #fdf6e3;
+    --bs-input-disabled-bg: #eee8d5;
+    --bs-input-color: #657b83;
+    --bs-input-border-color: #93a1a1;
+    --bs-input-focus-border-color: #2aa198;
+    --bs-input-focus-box-shadow: 0 0 0 0.25rem rgba(42, 161, 152, 0.25);
+    --bs-input-placeholder-color: #93a1a1;
+
+    /* Progress bars */
+    --bs-progress-bg: #eee8d5;
+    --bs-progress-bar-bg: #268bd2;
+
+    /* List groups */
+    --bs-list-group-bg: #fdf6e3;
+    --bs-list-group-border-color: #93a1a1;
+    --bs-list-group-hover-bg: #eee8d5;
+    --bs-list-group-active-bg: #268bd2;
+    --bs-list-group-active-color: #fdf6e3;
+    --bs-list-group-active-border-color: #268bd2;
+
+    /* Nav tabs / pills */
+    --bs-nav-tabs-border-color: #93a1a1;
+    --bs-nav-tabs-link-hover-border-color: #eee8d5 #eee8d5 #93a1a1;
+    --bs-nav-tabs-link-active-bg: #fdf6e3;
+    --bs-nav-tabs-link-active-border-color: #93a1a1 #93a1a1 #fdf6e3;
+    --bs-nav-pills-link-active-bg: #268bd2;
+    --bs-nav-link-color: #268bd2;
+    --bs-nav-link-hover-color: #1a5b8c;
+
+    /* Pagination */
+    --bs-pagination-bg: #fdf6e3;
+    --bs-pagination-border-color: #93a1a1;
+    --bs-pagination-hover-bg: #eee8d5;
+    --bs-pagination-hover-border-color: #839496;
+    --bs-pagination-active-bg: #268bd2;
+    --bs-pagination-active-border-color: #268bd2;
+    --bs-pagination-disabled-bg: #fdf6e3;
+    --bs-pagination-disabled-border-color: #93a1a1;
+
+    /* Tooltips and popovers */
+    --bs-tooltip-bg: #586e75;
+    --bs-tooltip-color: #fdf6e3;
+    --bs-popover-bg: #fdf6e3;
+    --bs-popover-border-color: #93a1a1;
+    --bs-popover-header-bg: #eee8d5;
+    --bs-popover-body-color: #657b83;
+
+    /* Toasts */
+    --bs-toast-bg: rgba(253, 246, 227, 0.95);
+    --bs-toast-border-color: #93a1a1;
+    --bs-toast-header-bg: #eee8d5;
+    --bs-toast-header-color: #586e75;
+
+    /* Modals */
+    --bs-modal-bg: #fdf6e3;
+    --bs-modal-border-color: #93a1a1;
+    --bs-modal-header-border-color: #93a1a1;
+    --bs-modal-footer-border-color: #93a1a1;
+
+    /* Accordion */
+    --bs-accordion-bg: #fdf6e3;
+    --bs-accordion-border-color: #93a1a1;
+    --bs-accordion-btn-bg: #fdf6e3;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(42, 161, 152, 0.25);
+    --bs-accordion-active-bg: #e9f3fa;
+    --bs-accordion-active-color: #1a5b8c;
+    --bs-accordion-button-active-bg: #e9f3fa;
+
+    /* Close button */
+    --bs-btn-close-color: #586e75;
+    //   --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23586e75'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+}
