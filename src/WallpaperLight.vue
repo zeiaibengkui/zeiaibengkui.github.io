@@ -3,15 +3,16 @@
 
 <script lang="ts" setup>
 import { useWindowScroll } from '@vueuse/core';
-import { Mafs, Parametric, type XYFunc } from 'mafs-vue'
+import { Mafs, Parametric, useStopwatch, type XYFunc } from 'mafs-vue'
 import 'mafs-vue/dist/core.css';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 // import 'mafs-vue/dist/font.css'
 const a = useWindowScroll({})
-const time = ref(0)
-setInterval(() => {
-    time.value += 0.02
-}, 33 /*30fps*/)
+const { time, start } = useStopwatch()
+
+onMounted(() => {
+    start()
+})
 const k = computed(() => a.y.value / 100 + (time.value % 100))
 const store: any = new Object()
 function zetaCriticalLine(t: number, maxIter = 2000) {
@@ -59,7 +60,7 @@ const formulas: XYFunc[] = [
      * @returns {[number, number]} - [real, imag] of ζ(1/2 + i t)
      */
     (t) => {
-        t = Math.floor(t * 50) / 50
+        t = Math.floor(t * 50) / 50 % 100
 
         if (!store[t]) {
             store[t] = zetaCriticalLine(t)
@@ -89,7 +90,7 @@ const selected = false ? Math.floor(Math.random() * formulas.length) : 1 // only
                 <stop offset="100%" stop-color="transparent" />
             </radialGradient>
         </defs>
-        <Parametric :t="[k, k + 1]" :xy="formulas[selected]!"
+        <Parametric :t="[k, k + 6]" :xy="formulas[selected]!"
             :stroked="{ color: '#f0f0f0'/* 'url(#radGrad)' */, weight: 10 }" />
     </Mafs>
 </template>
