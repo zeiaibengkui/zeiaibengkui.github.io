@@ -1,6 +1,17 @@
 {
   "articles": [
     {
+      "filename": "yjr_meeting_notes.md",
+      "title": "YJR 学习方法总结",
+      "brief": "小学一般，初中从年级六百多名到中考隐分，高中保持领先并学习物竞，考取北大计算机系。",
+      "cato": "learn",
+      "labels": [
+        "social"
+      ],
+      "time": "2026.6.29",
+      "length": 1
+    },
+    {
       "filename": "general_information_storage_means.md",
       "title": "信息储存方式总结",
       "brief": "1. 扫描/拍照",
@@ -158,11 +169,12 @@
     },
     "learn": {
       "color": "#F59E0B",
-      "count": 3,
+      "count": 4,
       "articles": [
         "2026年4月24日.md",
         "dp+单调队列.md",
-        "intergrade.md"
+        "intergrade.md",
+        "yjr_meeting_notes.md"
       ]
     },
     "media": {
@@ -353,8 +365,15 @@
         "why-am-not-i-born-to-be-rich.md"
       ]
     },
-    "video": {
+    "social": {
       "color": "#DB2777",
+      "count": 1,
+      "articles": [
+        "yjr_meeting_notes.md"
+      ]
+    },
+    "video": {
+      "color": "#3B82F6",
       "count": 1,
       "articles": [
         "bili.md"

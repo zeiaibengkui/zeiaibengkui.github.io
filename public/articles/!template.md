@@ -2,7 +2,7 @@
 
 cato: category-name
 
-labels
+labels:
 
 - label1
 - label2
